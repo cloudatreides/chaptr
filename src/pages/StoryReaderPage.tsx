@@ -14,7 +14,7 @@ import GemGateSheet from '../components/reader/GemGateSheet';
 import YourStorySidebar from '../components/reader/YourStorySidebar';
 
 export default function StoryReaderPage() {
-  const { chapterId } = useParams<{ chapterId: string }>();
+  const { chapterId: _chapterId } = useParams<{ chapterId: string }>();
   const selfieUrl = useChaptrStore((s) => s.selfieUrl);
   const userName = useChaptrStore((s) => s.userName);
   const toggleSidebar = useChaptrStore((s) => s.toggleSidebar);
@@ -25,7 +25,7 @@ export default function StoryReaderPage() {
   const [currentBeatId, setCurrentBeatId] = useState(chapter.startBeatId);
   const currentBeat = chapter.beats[currentBeatId];
   const [selectedChoiceId, setSelectedChoiceId] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
 
   // Gem gate sheet state
   const [gemGateOpen, setGemGateOpen] = useState(false);
