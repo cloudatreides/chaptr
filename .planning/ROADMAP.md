@@ -27,7 +27,7 @@ Five phases deliver a complete AI interactive story PoC. Foundation scaffolds th
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: Scaffold — Vite + React + Tailwind v3 + design system + font
+- [x] 01-01: Scaffold — Vite + React + Tailwind v3 + design system + font
 - [ ] 01-02: Routing + State — React Router v7 routes + Zustand persist store
 **UI hint**: yes
 

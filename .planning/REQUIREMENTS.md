@@ -7,11 +7,11 @@
 
 ### Foundation
 
-- [ ] **FOUND-01**: Vite + React + Tailwind v3 project scaffold (locked to tailwindcss@3, not v4)
-- [ ] **FOUND-02**: Global design system: CSS variable color tokens (#0D0B12, #D4799A, #9B7EC8, #D4AF37) configured in tailwind.config.js + applied via class names
-- [ ] **FOUND-03**: Space Grotesk font loaded via @fontsource-variable/space-grotesk (self-hosted, not Google CDN)
-- [ ] **FOUND-04**: Dark mode only — `class="dark"` applied permanently to `<html>` at boot, no toggle
-- [ ] **FOUND-05**: Global `.page-container` class (max-width 1440px, margin auto) applied to all page content; backgrounds remain full-width
+- [x] **FOUND-01**: Vite + React + Tailwind v3 project scaffold (locked to tailwindcss@3, not v4)
+- [x] **FOUND-02**: Global design system: CSS variable color tokens (#0D0B12, #D4799A, #9B7EC8, #D4AF37) configured in tailwind.config.js + applied via class names
+- [x] **FOUND-03**: Space Grotesk font loaded via @fontsource-variable/space-grotesk (self-hosted, not Google CDN)
+- [x] **FOUND-04**: Dark mode only — `class="dark"` applied permanently to `<html>` at boot, no toggle
+- [x] **FOUND-05**: Global `.page-container` class (max-width 1440px, margin auto) applied to all page content; backgrounds remain full-width
 - [ ] **FOUND-06**: React Router v7 (`createBrowserRouter` + `RouterProvider`) with routes: `/` (landing), `/upload` (selfie), `/universes` (selection), `/story/:chapterId` (reader)
 - [ ] **FOUND-07**: Zustand store with localStorage persistence via `persist` middleware; single key `chaptr-v1`; versioned migrations
 
@@ -121,11 +121,11 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
-| FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
-| FOUND-04 | Phase 1 | Pending |
-| FOUND-05 | Phase 1 | Pending |
+| FOUND-01 | Phase 1 | Complete |
+| FOUND-02 | Phase 1 | Complete |
+| FOUND-03 | Phase 1 | Complete |
+| FOUND-04 | Phase 1 | Complete |
+| FOUND-05 | Phase 1 | Complete |
 | FOUND-06 | Phase 1 | Pending |
 | FOUND-07 | Phase 1 | Pending |
 | ONB-01 | Phase 2 | Pending |
