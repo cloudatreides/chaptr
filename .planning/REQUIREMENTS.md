@@ -28,12 +28,12 @@
 ### Story Reader
 
 - [x] **READ-01**: Story reader screen renders full-width scene image at top, centered reading column (max-width 680px), choice buttons stacked at bottom, gem counter top-right, "Your Story" sidebar trigger
-- [ ] **READ-02**: Typewriter text animation on all story text reveals — characters appear sequentially using `staggerChildren: 0.03` Framer Motion variant; implemented via recursive `setTimeout` (not `setInterval`) with `isCancelledRef` guard for React Strict Mode
-- [ ] **READ-03**: Two-tap skip behaviour — first tap completes text instantly; second tap advances to next beat
-- [ ] **READ-04**: Choices never appear until typewriter animation completes (or is skipped)
-- [ ] **READ-05**: Choice mechanic renders 2–3 options per beat; premium/locked choice shows gem badge (e.g. "✦ 10 gems") in warm gold; first gem-gated choice in each chapter is always free
-- [ ] **READ-06**: Chosen choice renders highlighted (rose gradient); unchosen choices render at 30% opacity; continuation story text fades in below
-- [ ] **READ-07**: Locked choice gate: if gems insufficient, slide-up bottom sheet appears (not full-screen nav interrupt) offering gem options; never fully hides the locked choice text
+- [x] **READ-02**: Typewriter text animation on all story text reveals — characters appear sequentially using `staggerChildren: 0.03` Framer Motion variant; implemented via recursive `setTimeout` (not `setInterval`) with `isCancelledRef` guard for React Strict Mode
+- [x] **READ-03**: Two-tap skip behaviour — first tap completes text instantly; second tap advances to next beat
+- [x] **READ-04**: Choices never appear until typewriter animation completes (or is skipped)
+- [x] **READ-05**: Choice mechanic renders 2–3 options per beat; premium/locked choice shows gem badge (e.g. "✦ 10 gems") in warm gold; first gem-gated choice in each chapter is always free
+- [x] **READ-06**: Chosen choice renders highlighted (rose gradient); unchosen choices render at 30% opacity; continuation story text fades in below
+- [x] **READ-07**: Locked choice gate: if gems insufficient, slide-up bottom sheet appears (not full-screen nav interrupt) offering gem options; never fully hides the locked choice text
 - [x] **READ-08**: Scene loading state renders shimmer background, angular spinner, and skeleton text lines during AI generation
 - [x] **READ-09**: Progress bar renders at top of reader indicating chapter completion percentage
 
@@ -136,12 +136,12 @@
 | ONB-06 | Phase 2 | Complete |
 | ONB-07 | Phase 2 | Complete |
 | READ-01 | Phase 3 | Complete |
-| READ-02 | Phase 3 | Pending |
-| READ-03 | Phase 3 | Pending |
-| READ-04 | Phase 3 | Pending |
-| READ-05 | Phase 3 | Pending |
-| READ-06 | Phase 3 | Pending |
-| READ-07 | Phase 3 | Pending |
+| READ-02 | Phase 3 | Complete |
+| READ-03 | Phase 3 | Complete |
+| READ-04 | Phase 3 | Complete |
+| READ-05 | Phase 3 | Complete |
+| READ-06 | Phase 3 | Complete |
+| READ-07 | Phase 3 | Complete |
 | READ-08 | Phase 3 | Complete |
 | READ-09 | Phase 3 | Complete |
 | SIDE-01 | Phase 3 | Pending |
