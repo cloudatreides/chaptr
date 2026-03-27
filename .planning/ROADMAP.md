@@ -80,8 +80,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: Story State Machine — Zustand story graph types (DialogueNode, ChoiceNode, SceneTransitionNode, ChapterEndNode), node traversal logic, choice history accumulation
-- [ ] 04-02: Chapter 1 Content — authored prose for all nodes and branches, wired to state machine, full playthrough verified
+- [ ] 04-01-PLAN.md — Story state machine: extend types with nextBeatId, create chapter1.ts skeleton, fix READ-03 onAdvance, delete mockStoryData.ts, Wave 0 test stubs
+- [ ] 04-02-PLAN.md — Chapter 1 content: full 9-beat prose authoring, scene gradients, NamePromptModal, chapter-end overlay, human playthrough verification
 
 ### Phase 5: AI Story Engine
 **Goal**: Claude Haiku streams prose for every story beat; the static Chapter 1 graph becomes the seed prompt structure; choice history flows into every call for narrative continuity
