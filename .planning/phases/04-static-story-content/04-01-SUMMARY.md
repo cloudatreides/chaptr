@@ -129,6 +129,16 @@ Pre-existing LandingPage test failure (LandingPage.test.tsx "renders hero headli
 - beat-5 has isChapterEnd: true — chapter traversal terminates correctly
 - beat-4 adds a second choice moment (2 choices → beat-5) for minimum 3 branching points requirement
 
+## Self-Check: PASSED
+
+- FOUND: src/data/chapter1.ts
+- FOUND: src/__tests__/chapter1.test.ts
+- FOUND: src/__tests__/StoryReaderPage.test.tsx
+- CONFIRMED: src/data/mockStoryData.ts deleted
+- FOUND: commit 4c72ed0 (test stubs)
+- FOUND: commit 1ba73c9 (chapter1.ts implementation)
+- FOUND: commit 89a59af (docs/metadata)
+
 ---
 *Phase: 04-static-story-content*
 *Completed: 2026-03-28*
