@@ -80,7 +80,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — Story state machine: extend types with nextBeatId, create chapter1.ts skeleton, fix READ-03 onAdvance, delete mockStoryData.ts, Wave 0 test stubs
+- [x] 04-01-PLAN.md — Story state machine: extend types with nextBeatId, create chapter1.ts skeleton, fix READ-03 onAdvance, delete mockStoryData.ts, Wave 0 test stubs
 - [ ] 04-02-PLAN.md — Chapter 1 content: full 9-beat prose authoring, scene gradients, NamePromptModal, chapter-end overlay, human playthrough verification
 
 ### Phase 5: AI Story Engine
@@ -108,5 +108,5 @@ Plans:
 | 1. Foundation | 0/2 | Not started | - |
 | 2. Onboarding Flow | 0/2 | Not started | - |
 | 3. Core Reading Loop | 2/3 | In Progress|  |
-| 4. Static Story Content | 0/2 | Not started | - |
+| 4. Static Story Content | 1/2 | In Progress|  |
 | 5. AI Story Engine | 0/2 | Not started | - |

@@ -51,10 +51,10 @@
 
 ### Story Content — "The Seoul Transfer"
 
-- [ ] **STORY-01**: Static story graph for Chapter 1 of "The Seoul Transfer" — trainee life framing, enemies-to-lovers with lead Jiwoo (NOVA Entertainment, group: VEIL); first choice within first 300 words; 3–5 choices total; chapter ends on emotional hook
-- [ ] **STORY-02**: Story text written in second-person present tense ("You step into the practice room"); `[Name]` placeholder renders the user's name; protagonist physical description never locked in prose
-- [ ] **STORY-03**: Original fictional world only: agency name NOVA Entertainment, group name VEIL; zero real celebrity names or likenesses
-- [ ] **STORY-04**: At minimum, Chapter 1 fully playable end-to-end with static content before AI integration
+- [x] **STORY-01**: Static story graph for Chapter 1 of "The Seoul Transfer" — trainee life framing, enemies-to-lovers with lead Jiwoo (NOVA Entertainment, group: VEIL); first choice within first 300 words; 3–5 choices total; chapter ends on emotional hook
+- [x] **STORY-02**: Story text written in second-person present tense ("You step into the practice room"); `[Name]` placeholder renders the user's name; protagonist physical description never locked in prose
+- [x] **STORY-03**: Original fictional world only: agency name NOVA Entertainment, group name VEIL; zero real celebrity names or likenesses
+- [x] **STORY-04**: At minimum, Chapter 1 fully playable end-to-end with static content before AI integration
 
 ### AI Story Engine
 
@@ -153,10 +153,10 @@
 | VIZ-01 | Phase 3 | Complete |
 | VIZ-02 | Phase 3 | Complete |
 | VIZ-03 | Phase 2 | Complete |
-| STORY-01 | Phase 4 | Pending |
-| STORY-02 | Phase 4 | Pending |
-| STORY-03 | Phase 4 | Pending |
-| STORY-04 | Phase 4 | Pending |
+| STORY-01 | Phase 4 | Complete |
+| STORY-02 | Phase 4 | Complete |
+| STORY-03 | Phase 4 | Complete |
+| STORY-04 | Phase 4 | Complete |
 | AI-01 | Phase 5 | Pending |
 | AI-02 | Phase 5 | Pending |
 | AI-03 | Phase 5 | Pending |
