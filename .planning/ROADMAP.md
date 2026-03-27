@@ -45,7 +45,7 @@ Plans:
 
 Plans:
 - [x] 02-01: Landing + Universe Selection — landing page, genre tabs, universe cards, stagger animation
-- [ ] 02-02: Selfie Upload Flow — primer screen, react-easy-crop, canvas compression, localStorage storage
+- [x] 02-02: Selfie Upload Flow — primer screen, react-easy-crop, canvas compression, localStorage storage
 **UI hint**: yes
 
 ### Phase 3: Core Reading Loop
