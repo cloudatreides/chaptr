@@ -20,16 +20,20 @@ export type ChaptrState = {
   userName: string | null;
   storyState: StoryState;
   choiceHistory: ChoiceRecord[];
+  showSelfiePrompt: boolean;
   _schemaVersion: number;
 
   // Actions
   setGemBalance: (balance: number) => void;
   spendGems: (amount: number) => boolean;
   setSelfie: (url: string) => void;
+  clearSelfie: () => void;
   setUserName: (name: string) => void;
   setStoryState: (state: StoryState) => void;
   recordChoice: (choice: ChoiceRecord) => void;
   resetStory: () => void;
+  triggerSelfiePrompt: () => void;
+  dismissSelfiePrompt: () => void;
 };
 
 const INITIAL_STATE = {
@@ -38,7 +42,8 @@ const INITIAL_STATE = {
   userName: null,
   storyState: null,
   choiceHistory: [],
-  _schemaVersion: 1,
+  showSelfiePrompt: false,
+  _schemaVersion: 2,
 };
 
 export const useChaptrStore = create<ChaptrState>()(
@@ -57,6 +62,8 @@ export const useChaptrStore = create<ChaptrState>()(
 
       setSelfie: (url) => set({ selfieUrl: url }),
 
+      clearSelfie: () => set({ selfieUrl: null }),
+
       setUserName: (name) => set({ userName: name }),
 
       setStoryState: (state) => set({ storyState: state }),
@@ -66,15 +73,21 @@ export const useChaptrStore = create<ChaptrState>()(
 
       resetStory: () =>
         set({ storyState: null, choiceHistory: [] }),
+
+      triggerSelfiePrompt: () => set({ showSelfiePrompt: true }),
+
+      dismissSelfiePrompt: () => set({ showSelfiePrompt: false }),
     }),
     {
       name: 'chaptr-v1',
       storage: createJSONStorage(() => localStorage),
-      // Migrate to new schema versions here in future
-      version: 1,
-      migrate: (persisted, _version) => {
-        // version 0 → 1: no migration needed yet
-        return persisted as ChaptrState;
+      version: 2,
+      migrate: (persisted: unknown, version: number) => {
+        const state = persisted as Record<string, unknown>;
+        if (version < 2) {
+          state.showSelfiePrompt = false;
+        }
+        return state as ChaptrState;
       },
     }
   )
