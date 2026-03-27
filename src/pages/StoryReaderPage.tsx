@@ -3,15 +3,21 @@ import { useParams } from 'react-router';
 import { useChaptrStore } from '../store/useChaptrStore';
 import { useTypewriter } from '../hooks/useTypewriter';
 import { mockChapter1 } from '../data/mockStoryData';
+import type { StoryChoice } from '../data/mockStoryData';
 import ProgressBar from '../components/reader/ProgressBar';
 import SceneImage from '../components/reader/SceneImage';
 import ReaderNavBar from '../components/reader/ReaderNavBar';
 import LoadingSkeleton from '../components/reader/LoadingSkeleton';
+import TypewriterText from '../components/reader/TypewriterText';
+import ChoiceList from '../components/reader/ChoiceList';
+import GemGateSheet from '../components/reader/GemGateSheet';
 
 export default function StoryReaderPage() {
   const { chapterId } = useParams<{ chapterId: string }>();
   const selfieUrl = useChaptrStore((s) => s.selfieUrl);
+  const userName = useChaptrStore((s) => s.userName);
   const toggleSidebar = useChaptrStore((s) => s.toggleSidebar);
+  const gemBalance = useChaptrStore((s) => s.gemBalance);
 
   // For PoC, use mock data
   const chapter = mockChapter1;
@@ -19,6 +25,10 @@ export default function StoryReaderPage() {
   const currentBeat = chapter.beats[currentBeatId];
   const [selectedChoiceId, setSelectedChoiceId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  // Gem gate sheet state
+  const [gemGateOpen, setGemGateOpen] = useState(false);
+  const [gemGateCost, setGemGateCost] = useState(0);
 
   // Calculate progress as percentage of visited beats
   const totalBeats = Object.keys(chapter.beats).length;
@@ -35,12 +45,43 @@ export default function StoryReaderPage() {
     setVisitedBeats((v) => v + 1);
   };
 
-  const handleTextTap = () => {
-    if (!isComplete) {
-      completeInstantly();
+  const handleChoiceSelect = (choice: StoryChoice) => {
+    const store = useChaptrStore.getState();
+    const isFree =
+      choice.gemCost > 0 && store.isFirstGemChoiceFree(chapter.id);
+
+    if (choice.gemCost > 0 && !isFree) {
+      const success = store.spendGems(choice.gemCost);
+      if (!success) {
+        setGemGateCost(choice.gemCost);
+        setGemGateOpen(true);
+        return;
+      }
     }
-    // Second tap advance handled by choice selection, not text tap
-    // (choices must appear first per READ-04)
+
+    if (choice.gemCost > 0 && isFree) {
+      store.setFirstGemChoiceUsed(chapter.id);
+    }
+
+    store.logDecision({
+      chapterId: chapter.id,
+      chapterNum: 1,
+      choiceSummary: choice.text,
+      timestamp: Date.now(),
+    });
+
+    const choiceIndex = currentBeat.choices.findIndex(
+      (c) => c.id === choice.id
+    );
+    store.recordChoice({
+      nodeId: currentBeatId,
+      choiceIndex,
+      label: choice.text,
+      timestamp: Date.now(),
+    });
+
+    setSelectedChoiceId(choice.id);
+    setTimeout(() => advanceBeat(choice.nextBeatId), 600);
   };
 
   return (
@@ -67,44 +108,33 @@ export default function StoryReaderPage() {
             <LoadingSkeleton />
           ) : (
             <>
-              <div
-                className="py-8 cursor-pointer"
-                onClick={handleTextTap}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') handleTextTap();
+              <TypewriterText
+                text={displayedText}
+                userName={userName}
+                isComplete={isComplete}
+                onSkip={completeInstantly}
+                onAdvance={() => {
+                  // Only advance on text tap if current beat has no choices (prose-only beats)
+                  if (
+                    currentBeat.choices.length === 0 &&
+                    !currentBeat.isChapterEnd
+                  ) {
+                    // No auto-advance for prose-only beats without a defined next
+                  }
                 }}
-                aria-live="polite"
-              >
-                <p className="text-text-primary text-base leading-[1.6] font-sans">
-                  {displayedText}
-                </p>
-              </div>
+              />
 
-              {/* Choice list placeholder - Plan 02 replaces this */}
-              {isComplete && currentBeat.choices.length > 0 && (
-                <div className="space-y-3 pb-8">
-                  {currentBeat.choices.map((choice) => (
-                    <button
-                      key={choice.id}
-                      className="w-full rounded-xl border border-surface bg-surface px-4 py-3 text-left text-base text-text-primary hover:border-rose-accent/50 transition-colors duration-150 min-h-[44px]"
-                      onClick={() => {
-                        setSelectedChoiceId(choice.id);
-                        // Delay advance to show selection state
-                        setTimeout(() => advanceBeat(choice.nextBeatId), 600);
-                      }}
-                    >
-                      {choice.text}
-                      {choice.gemCost > 0 && (
-                        <span className="ml-auto float-right bg-gold/15 text-gold text-xs font-semibold px-2 py-0.5 rounded-full">
-                          &#10022; {choice.gemCost}
-                        </span>
-                      )}
-                    </button>
-                  ))}
-                </div>
-              )}
+              <ChoiceList
+                choices={currentBeat.choices}
+                isComplete={isComplete}
+                selectedChoiceId={selectedChoiceId}
+                chapterId={chapter.id}
+                onChoiceSelect={handleChoiceSelect}
+                onGemGateOpen={(cost) => {
+                  setGemGateCost(cost);
+                  setGemGateOpen(true);
+                }}
+              />
             </>
           )}
         </div>
@@ -112,6 +142,13 @@ export default function StoryReaderPage() {
         {/* Right space */}
         <div className="hidden lg:block" />
       </div>
+
+      <GemGateSheet
+        open={gemGateOpen}
+        onClose={() => setGemGateOpen(false)}
+        gemCost={gemGateCost}
+        currentBalance={gemBalance}
+      />
     </div>
   );
 }
