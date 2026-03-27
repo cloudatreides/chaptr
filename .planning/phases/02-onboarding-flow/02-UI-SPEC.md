@@ -48,9 +48,9 @@ Exceptions: Touch target minimum 44px height for CTA buttons and genre tabs on m
 | Role | Size | Weight | Line Height | Usage in Phase 2 |
 |------|------|--------|-------------|-------------------|
 | Body | 16px | 400 | 1.5 | Universe card premise text, primer screen body copy |
-| Label | 14px | 500 | 1.4 | Genre tab labels, "Notify me" label, skip CTA, metadata |
+| Label | 14px | 400 | 1.4 | Genre tab labels, "Notify me" label, skip CTA, metadata |
 | Heading | 20px | 600 | 1.3 | Universe card titles, primer screen headline "Make the story yours" |
-| Display | 36px (mobile) / 48px (desktop) | 700 | 1.1 | Landing hero "Your face. Your story." |
+| Display | 36px (mobile) / 48px (desktop) | 600 | 1.1 | Landing hero "Your face. Your story." |
 
 Font family: `"Space Grotesk Variable"` (registered in `tailwind.config.js` as `font-sans`).
 
@@ -116,7 +116,7 @@ Easing: default spring or `ease-out`.
 |----------|-------|
 | Tabs | ALL / ROMANCE / HORROR / MYSTERY / ADVENTURE |
 | Layout | Horizontal scroll on mobile, centered row on desktop |
-| Active state | `text-text-primary` + 2px `bg-rose-accent` underline, `font-weight: 500` |
+| Active state | `text-text-primary` + 2px `bg-rose-accent` underline, `font-weight: 400` |
 | Inactive state | `text-muted`, no underline |
 | Tab height | 44px minimum (touch target) |
 | Gap between tabs | 8px |
@@ -130,7 +130,7 @@ Easing: default spring or `ease-out`.
 | Border radius | 12px (`rounded-xl`) | 12px (`rounded-xl`) |
 | Padding | 24px | 24px |
 | Title | 20px, weight 600, `text-text-primary` | 20px, weight 600, `text-text-primary` (but dimmed by parent opacity) |
-| Genre tag | 14px, weight 500, `text-rose-accent` | 14px, weight 500 (dimmed) |
+| Genre tag | 14px, weight 400, `text-rose-accent` | 14px, weight 400 (dimmed) |
 | Premise | 16px, weight 400, `text-muted`, 2 lines max | 16px (dimmed) |
 | Overlay | None | `Lock` icon (lucide-react, 24px) centered + "Notify me" label below, `text-muted`, 14px |
 | Cursor | `cursor-pointer` | `cursor-default` |
