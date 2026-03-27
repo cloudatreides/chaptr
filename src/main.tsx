@@ -2,22 +2,19 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import './index.css';
+import AppShell from './components/AppShell';
 import LandingPage from './pages/LandingPage';
 import UniversesPage from './pages/UniversesPage';
 import StoryReaderPage from './pages/StoryReaderPage';
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <LandingPage />,
-  },
-  {
-    path: '/universes',
-    element: <UniversesPage />,
-  },
-  {
-    path: '/story/:chapterId',
-    element: <StoryReaderPage />,
+    element: <AppShell />,
+    children: [
+      { path: '/', element: <LandingPage /> },
+      { path: '/universes', element: <UniversesPage /> },
+      { path: '/story/:chapterId', element: <StoryReaderPage /> },
+    ],
   },
 ]);
 
