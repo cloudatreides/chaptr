@@ -1,0 +1,21 @@
+@import '@fontsource-variable/space-grotesk';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-base: #0D0B12;
+  --color-rose: #D4799A;
+  --color-purple: #9B7EC8;
+  --color-gold: #D4AF37;
+  --color-surface: #1A1724;
+  --color-text: #F0EAF8;
+  --color-muted: #8B7FA8;
+}
+
+.page-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
