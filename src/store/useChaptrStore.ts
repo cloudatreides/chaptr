@@ -13,6 +13,13 @@ export type ChoiceRecord = {
   timestamp: number;
 };
 
+export type DecisionLogEntry = {
+  chapterId: string;
+  chapterNum: number;
+  choiceSummary: string;
+  timestamp: number;
+};
+
 export type ChaptrState = {
   // Persisted fields
   gemBalance: number;
@@ -21,6 +28,9 @@ export type ChaptrState = {
   storyState: StoryState;
   choiceHistory: ChoiceRecord[];
   showSelfiePrompt: boolean;
+  decisionLog: DecisionLogEntry[];
+  sidebarOpen: boolean;
+  firstGemChoiceUsed: Record<string, boolean>;
   _schemaVersion: number;
 
   // Actions
@@ -34,6 +44,10 @@ export type ChaptrState = {
   resetStory: () => void;
   triggerSelfiePrompt: () => void;
   dismissSelfiePrompt: () => void;
+  logDecision: (entry: DecisionLogEntry) => void;
+  toggleSidebar: () => void;
+  setFirstGemChoiceUsed: (chapterId: string) => void;
+  isFirstGemChoiceFree: (chapterId: string) => boolean;
 };
 
 const INITIAL_STATE = {
@@ -43,7 +57,10 @@ const INITIAL_STATE = {
   storyState: null,
   choiceHistory: [],
   showSelfiePrompt: false,
-  _schemaVersion: 2,
+  decisionLog: [] as DecisionLogEntry[],
+  sidebarOpen: false,
+  firstGemChoiceUsed: {} as Record<string, boolean>,
+  _schemaVersion: 3,
 };
 
 export const useChaptrStore = create<ChaptrState>()(
@@ -77,15 +94,33 @@ export const useChaptrStore = create<ChaptrState>()(
       triggerSelfiePrompt: () => set({ showSelfiePrompt: true }),
 
       dismissSelfiePrompt: () => set({ showSelfiePrompt: false }),
+
+      logDecision: (entry) =>
+        set((s) => ({ decisionLog: [...s.decisionLog, entry] })),
+
+      toggleSidebar: () => set((s) => ({ sidebarOpen: !s.sidebarOpen })),
+
+      setFirstGemChoiceUsed: (chapterId) =>
+        set((s) => ({
+          firstGemChoiceUsed: { ...s.firstGemChoiceUsed, [chapterId]: true },
+        })),
+
+      isFirstGemChoiceFree: (chapterId) =>
+        !get().firstGemChoiceUsed[chapterId],
     }),
     {
       name: 'chaptr-v1',
       storage: createJSONStorage(() => localStorage),
-      version: 2,
+      version: 3,
       migrate: (persisted: unknown, version: number) => {
         const state = persisted as Record<string, unknown>;
         if (version < 2) {
           state.showSelfiePrompt = false;
+        }
+        if (version < 3) {
+          state.decisionLog = [];
+          state.sidebarOpen = false;
+          state.firstGemChoiceUsed = {};
         }
         return state as ChaptrState;
       },
