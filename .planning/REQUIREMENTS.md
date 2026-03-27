@@ -27,15 +27,15 @@
 
 ### Story Reader
 
-- [ ] **READ-01**: Story reader screen renders full-width scene image at top, centered reading column (max-width 680px), choice buttons stacked at bottom, gem counter top-right, "Your Story" sidebar trigger
+- [x] **READ-01**: Story reader screen renders full-width scene image at top, centered reading column (max-width 680px), choice buttons stacked at bottom, gem counter top-right, "Your Story" sidebar trigger
 - [ ] **READ-02**: Typewriter text animation on all story text reveals — characters appear sequentially using `staggerChildren: 0.03` Framer Motion variant; implemented via recursive `setTimeout` (not `setInterval`) with `isCancelledRef` guard for React Strict Mode
 - [ ] **READ-03**: Two-tap skip behaviour — first tap completes text instantly; second tap advances to next beat
 - [ ] **READ-04**: Choices never appear until typewriter animation completes (or is skipped)
 - [ ] **READ-05**: Choice mechanic renders 2–3 options per beat; premium/locked choice shows gem badge (e.g. "✦ 10 gems") in warm gold; first gem-gated choice in each chapter is always free
 - [ ] **READ-06**: Chosen choice renders highlighted (rose gradient); unchosen choices render at 30% opacity; continuation story text fades in below
 - [ ] **READ-07**: Locked choice gate: if gems insufficient, slide-up bottom sheet appears (not full-screen nav interrupt) offering gem options; never fully hides the locked choice text
-- [ ] **READ-08**: Scene loading state renders shimmer background, angular spinner, and skeleton text lines during AI generation
-- [ ] **READ-09**: Progress bar renders at top of reader indicating chapter completion percentage
+- [x] **READ-08**: Scene loading state renders shimmer background, angular spinner, and skeleton text lines during AI generation
+- [x] **READ-09**: Progress bar renders at top of reader indicating chapter completion percentage
 
 ### Your Story Sidebar
 
@@ -68,13 +68,13 @@
 
 ### Protagonist Visuals
 
-- [ ] **VIZ-01**: Scene images use static illustrated artwork with silhouette protagonist (face deliberately obscured / backlit)
-- [ ] **VIZ-02**: If selfie uploaded: user photo thumbnail rendered via CSS `position: absolute` overlay on protagonist silhouette with `mix-blend-mode: luminosity`; displayed at emotionally salient moments (chapter cover, completion screen) — not every scene
+- [x] **VIZ-01**: Scene images use static illustrated artwork with silhouette protagonist (face deliberately obscured / backlit)
+- [x] **VIZ-02**: If selfie uploaded: user photo thumbnail rendered via CSS `position: absolute` overlay on protagonist silhouette with `mix-blend-mode: luminosity`; displayed at emotionally salient moments (chapter cover, completion screen) — not every scene
 - [x] **VIZ-03**: Staggered card entrance animations on universe cards (Framer Motion, `staggerChildren: 0.08`, `opacity: 0, y: 24` → `opacity: 1, y: 0`)
 
 ### Desktop Layout
 
-- [ ] **DESK-01**: Desktop web layout (1440px) with left sidebar chapter list, centered 680px reading column, full-width scene image
+- [x] **DESK-01**: Desktop web layout (1440px) with left sidebar chapter list, centered 680px reading column, full-width scene image
 - [ ] **DESK-02**: All layout uses Tailwind responsive prefixes (`flex-col md:flex-row`, `px-5 md:px-[60px]`); no hardcoded desktop pixel offsets
 
 ## v2 Requirements
@@ -135,23 +135,23 @@
 | ONB-05 | Phase 2 | Complete |
 | ONB-06 | Phase 2 | Complete |
 | ONB-07 | Phase 2 | Complete |
-| READ-01 | Phase 3 | Pending |
+| READ-01 | Phase 3 | Complete |
 | READ-02 | Phase 3 | Pending |
 | READ-03 | Phase 3 | Pending |
 | READ-04 | Phase 3 | Pending |
 | READ-05 | Phase 3 | Pending |
 | READ-06 | Phase 3 | Pending |
 | READ-07 | Phase 3 | Pending |
-| READ-08 | Phase 3 | Pending |
-| READ-09 | Phase 3 | Pending |
+| READ-08 | Phase 3 | Complete |
+| READ-09 | Phase 3 | Complete |
 | SIDE-01 | Phase 3 | Pending |
 | SIDE-02 | Phase 3 | Pending |
 | SIDE-03 | Phase 3 | Pending |
 | GEM-01 | Phase 3 | Pending |
 | GEM-02 | Phase 3 | Pending |
 | GEM-03 | Phase 3 | Pending |
-| VIZ-01 | Phase 3 | Pending |
-| VIZ-02 | Phase 3 | Pending |
+| VIZ-01 | Phase 3 | Complete |
+| VIZ-02 | Phase 3 | Complete |
 | VIZ-03 | Phase 2 | Complete |
 | STORY-01 | Phase 4 | Pending |
 | STORY-02 | Phase 4 | Pending |
@@ -164,7 +164,7 @@
 | AI-05 | Phase 5 | Pending |
 | AI-06 | Phase 5 | Pending |
 | AI-07 | Phase 5 | Pending |
-| DESK-01 | Phase 3 | Pending |
+| DESK-01 | Phase 3 | Complete |
 | DESK-02 | Phase 1 | Pending |
 
 **Coverage:**
