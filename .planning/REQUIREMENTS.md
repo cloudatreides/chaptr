@@ -39,15 +39,15 @@
 
 ### Your Story Sidebar
 
-- [ ] **SIDE-01**: "Your Story" sidebar renders as bottom sheet on mobile (Vaul, snapPoints [0.5, 1]) and as left sidebar on desktop
-- [ ] **SIDE-02**: Sidebar displays chapter timeline with key decision moments logged as user makes choices
-- [ ] **SIDE-03**: Each timeline entry shows chapter number, decision summary, and the option chosen
+- [x] **SIDE-01**: "Your Story" sidebar renders as bottom sheet on mobile (Vaul, snapPoints [0.5, 1]) and as left sidebar on desktop
+- [x] **SIDE-02**: Sidebar displays chapter timeline with key decision moments logged as user makes choices
+- [x] **SIDE-03**: Each timeline entry shows chapter number, decision summary, and the option chosen
 
 ### Gem System
 
-- [ ] **GEM-01**: Gem counter displayed in reader top-right nav, initialised at 30 gems from Zustand store
-- [ ] **GEM-02**: Spending a gem on a premium choice deducts the cost from the Zustand gem balance
-- [ ] **GEM-03**: Gem balance persists in localStorage across sessions
+- [x] **GEM-01**: Gem counter displayed in reader top-right nav, initialised at 30 gems from Zustand store
+- [x] **GEM-02**: Spending a gem on a premium choice deducts the cost from the Zustand gem balance
+- [x] **GEM-03**: Gem balance persists in localStorage across sessions
 
 ### Story Content — "The Seoul Transfer"
 
@@ -144,12 +144,12 @@
 | READ-07 | Phase 3 | Pending |
 | READ-08 | Phase 3 | Complete |
 | READ-09 | Phase 3 | Complete |
-| SIDE-01 | Phase 3 | Pending |
-| SIDE-02 | Phase 3 | Pending |
-| SIDE-03 | Phase 3 | Pending |
-| GEM-01 | Phase 3 | Pending |
-| GEM-02 | Phase 3 | Pending |
-| GEM-03 | Phase 3 | Pending |
+| SIDE-01 | Phase 3 | Complete |
+| SIDE-02 | Phase 3 | Complete |
+| SIDE-03 | Phase 3 | Complete |
+| GEM-01 | Phase 3 | Complete |
+| GEM-02 | Phase 3 | Complete |
+| GEM-03 | Phase 3 | Complete |
 | VIZ-01 | Phase 3 | Complete |
 | VIZ-02 | Phase 3 | Complete |
 | VIZ-03 | Phase 2 | Complete |

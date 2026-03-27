@@ -64,7 +64,7 @@ Plans:
 Plans:
 - [x] 03-01: Reader Layout + Scene States — screen structure, progress bar, scene image, loading shimmer/spinner/skeleton, protagonist overlay (VIZ-01, VIZ-02)
 - [ ] 03-02: Typewriter + Choice Mechanic — typewriter hook, two-tap skip, choice rendering, selected/unchosen states, gem badge, locked gate bottom sheet
-- [ ] 03-03: Gem System + Your Story Sidebar — Zustand gem balance, deduction logic, Vaul sidebar (mobile bottom sheet + desktop panel), decision logging
+- [x] 03-03: Gem System + Your Story Sidebar — Zustand gem balance, deduction logic, Vaul sidebar (mobile bottom sheet + desktop panel), decision logging
 **UI hint**: yes
 
 ### Phase 4: Static Story Content
@@ -107,6 +107,6 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation | 0/2 | Not started | - |
 | 2. Onboarding Flow | 0/2 | Not started | - |
-| 3. Core Reading Loop | 0/3 | Not started | - |
+| 3. Core Reading Loop | 2/3 | In Progress|  |
 | 4. Static Story Content | 0/2 | Not started | - |
 | 5. AI Story Engine | 0/2 | Not started | - |
