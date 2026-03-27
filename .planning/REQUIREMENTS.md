@@ -17,9 +17,9 @@
 
 ### Onboarding
 
-- [ ] **ONB-01**: Landing page renders with hero text "Your face. Your story.", single CTA "Start Your Story", dark cinematic background with character silhouettes
-- [ ] **ONB-02**: Story universe selection screen with genre filter tabs (ALL / ROMANCE / HORROR / MYSTERY / ADVENTURE) and universe cards (cover image, title, genre tag, 2-sentence premise)
-- [ ] **ONB-03**: Active universe card ("The Seoul Transfer") renders full colour; coming-soon cards render desaturated with lock icon + "Notify me" label
+- [x] **ONB-01**: Landing page renders with hero text "Your face. Your story.", single CTA "Start Your Story", dark cinematic background with character silhouettes
+- [x] **ONB-02**: Story universe selection screen with genre filter tabs (ALL / ROMANCE / HORROR / MYSTERY / ADVENTURE) and universe cards (cover image, title, genre tag, 2-sentence premise)
+- [x] **ONB-03**: Active universe card ("The Seoul Transfer") renders full colour; coming-soon cards render desaturated with lock icon + "Notify me" label
 - [ ] **ONB-04**: Selfie upload prompt shown AFTER chapter 1 completes (not at launch) — uses native file input with `capture="user"` for direct front-camera access on mobile
 - [ ] **ONB-05**: Selfie onboarding framing: custom primer screen shown before browser file dialog with copy "Make the story yours" (not a permission ask); includes skip CTA "Use an illustrated avatar instead"
 - [ ] **ONB-06**: Selfie image compressed to 256×256 JPEG at 80% quality via canvas before storing in localStorage (never stored as raw base64)
@@ -70,7 +70,7 @@
 
 - [ ] **VIZ-01**: Scene images use static illustrated artwork with silhouette protagonist (face deliberately obscured / backlit)
 - [ ] **VIZ-02**: If selfie uploaded: user photo thumbnail rendered via CSS `position: absolute` overlay on protagonist silhouette with `mix-blend-mode: luminosity`; displayed at emotionally salient moments (chapter cover, completion screen) — not every scene
-- [ ] **VIZ-03**: Staggered card entrance animations on universe cards (Framer Motion, `staggerChildren: 0.08`, `opacity: 0, y: 24` → `opacity: 1, y: 0`)
+- [x] **VIZ-03**: Staggered card entrance animations on universe cards (Framer Motion, `staggerChildren: 0.08`, `opacity: 0, y: 24` → `opacity: 1, y: 0`)
 
 ### Desktop Layout
 
@@ -128,9 +128,9 @@
 | FOUND-05 | Phase 1 | Complete |
 | FOUND-06 | Phase 1 | Pending |
 | FOUND-07 | Phase 1 | Pending |
-| ONB-01 | Phase 2 | Pending |
-| ONB-02 | Phase 2 | Pending |
-| ONB-03 | Phase 2 | Pending |
+| ONB-01 | Phase 2 | Complete |
+| ONB-02 | Phase 2 | Complete |
+| ONB-03 | Phase 2 | Complete |
 | ONB-04 | Phase 2 | Pending |
 | ONB-05 | Phase 2 | Pending |
 | ONB-06 | Phase 2 | Pending |
@@ -152,7 +152,7 @@
 | GEM-03 | Phase 3 | Pending |
 | VIZ-01 | Phase 3 | Pending |
 | VIZ-02 | Phase 3 | Pending |
-| VIZ-03 | Phase 2 | Pending |
+| VIZ-03 | Phase 2 | Complete |
 | STORY-01 | Phase 4 | Pending |
 | STORY-02 | Phase 4 | Pending |
 | STORY-03 | Phase 4 | Pending |
