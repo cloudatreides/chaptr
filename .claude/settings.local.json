@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(cmd /c \"dir C:\\\\Users\\\\ASUS\\\\projects\\\\chaptr\" 2>&1)"
+    ]
+  }
+}

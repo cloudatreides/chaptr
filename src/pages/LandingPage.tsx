@@ -3,79 +3,150 @@ import { useNavigate } from 'react-router';
 
 const containerVariants = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.2 },
-  },
+  visible: { transition: { staggerChildren: 0.15 } },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 export default function LandingPage() {
   const navigate = useNavigate();
 
   return (
-    <div
-      className="min-h-screen relative flex flex-col items-center justify-center"
-      style={{ background: 'linear-gradient(to bottom, #0D0B12, #1A0A1E)' }}
-    >
-      {/* Silhouette SVG */}
-      <svg
-        className="absolute bottom-0 left-0 right-0 opacity-30"
-        viewBox="0 0 1440 300"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMax slice"
-        aria-hidden="true"
-      >
-        <path
-          d="M200 300 Q210 180 240 160 Q260 140 270 120 Q280 100 275 80 Q270 60 255 55 Q240 50 230 60 Q220 70 218 90 Q215 110 210 130 Q200 160 180 180 Q160 200 150 240 Q140 270 140 300Z"
-          fill="#2A1A3E"
-        />
-        <path
-          d="M600 300 Q610 200 630 170 Q650 140 660 110 Q670 80 665 60 Q660 40 645 35 Q630 30 620 42 Q610 55 608 75 Q605 100 600 130 Q590 170 570 200 Q555 230 550 260 Q545 280 540 300Z"
-          fill="#2A1A3E"
-        />
-        <path
-          d="M1000 300 Q1010 210 1030 180 Q1050 150 1065 120 Q1080 90 1075 65 Q1070 45 1055 38 Q1040 32 1028 44 Q1018 58 1015 80 Q1012 105 1005 140 Q995 175 975 210 Q960 240 950 270 Q945 285 940 300Z"
-          fill="#2A1A3E"
-        />
-        <path
-          d="M1250 300 Q1255 230 1270 200 Q1285 170 1295 145 Q1305 120 1300 98 Q1295 80 1282 75 Q1270 70 1260 80 Q1252 92 1250 110 Q1248 130 1242 155 Q1232 185 1218 215 Q1208 240 1200 270 Q1195 285 1190 300Z"
-          fill="#2A1A3E"
-        />
-      </svg>
+    <div className="relative min-h-screen overflow-hidden bg-[#0D0B12]">
+      {/* Hero background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/hero-bg.png')" }}
+      />
 
-      {/* Hero content */}
-      <motion.div
-        className="relative z-10 page-container px-5 text-center flex flex-col items-center"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.div variants={itemVariants}>
-          <h1 className="text-text-primary font-sans font-semibold text-4xl md:text-5xl leading-tight">
-            Your face. Your story.
-          </h1>
-        </motion.div>
+      {/* Top fade — #0D0B12 → transparent */}
+      <div
+        className="absolute top-0 left-0 right-0 h-[200px] pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, #0D0B12CC 0%, #0D0B1200 100%)',
+        }}
+      />
 
-        <motion.div variants={itemVariants}>
-          <motion.button
-            className="bg-rose-accent text-[#0D0B12] font-sans text-base font-medium px-8 py-3 rounded-full mt-8 focus-visible:ring-2 focus-visible:ring-rose-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => navigate('/universes')}
+      {/* Bottom gradient overlay — transparent → #0D0B12 */}
+      <div
+        className="absolute left-0 right-0 pointer-events-none"
+        style={{
+          top: '300px',
+          height: '544px',
+          background: 'linear-gradient(to bottom, #0D0B1200 0%, #0D0B12FF 55%, #0D0B12FF 100%)',
+        }}
+      />
+
+      {/* Content layer */}
+      <div className="relative z-10 flex flex-col min-h-screen px-6">
+
+        {/* Logo — top left */}
+        <motion.div
+          className="flex items-center gap-2 pt-[74px]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+        >
+          {/* Icon */}
+          <div
+            className="w-[34px] h-[34px] rounded-lg flex items-center justify-center relative"
+            style={{
+              background: 'linear-gradient(135deg, #E05263 0%, #D4799A 100%)',
+            }}
           >
-            Start Your Story
-          </motion.button>
+            <span className="text-white font-bold text-[19px] font-sans leading-none">C</span>
+            <div className="absolute bottom-[7px] right-[7px] w-[6px] h-[6px] rounded-full bg-white" />
+          </div>
+          {/* Wordmark */}
+          <span className="text-white font-medium text-[18px]" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+            chaptr
+          </span>
         </motion.div>
-      </motion.div>
+
+        {/* Spacer pushes hero text to y≈490 equivalent */}
+        <div className="flex-1" />
+
+        {/* Hero text block */}
+        <motion.div
+          className="flex flex-col gap-4"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Tag */}
+          <motion.p
+            variants={itemVariants}
+            className="text-[11px] font-semibold tracking-[2px]"
+            style={{ color: '#D4799A', fontFamily: 'Space Grotesk, sans-serif' }}
+          >
+            AI · INTERACTIVE · PERSONALIZED
+          </motion.p>
+
+          {/* Headline */}
+          <motion.h1
+            variants={itemVariants}
+            className="text-white font-bold"
+            style={{
+              fontFamily: 'Space Grotesk, sans-serif',
+              fontSize: '48px',
+              letterSpacing: '-1px',
+              lineHeight: '0.95',
+            }}
+          >
+            Your face.<br />Your story.
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            variants={itemVariants}
+            style={{
+              color: '#B0A8BF',
+              fontFamily: 'Space Grotesk, sans-serif',
+              fontSize: '14px',
+              lineHeight: '1.5',
+            }}
+          >
+            Step inside the story. AI generates a world where you're the main character.
+          </motion.p>
+        </motion.div>
+
+        {/* CTA Button */}
+        <motion.button
+          className="mt-8 w-full flex items-center justify-center gap-2 rounded-[28px] h-[56px] text-white font-bold text-[16px]"
+          style={{
+            fontFamily: 'Space Grotesk, sans-serif',
+            letterSpacing: '0.5px',
+            background: 'linear-gradient(to bottom, #D4799A 0%, #9B7EC8 100%)',
+          }}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={() => navigate('/universes')}
+        >
+          Start Your Story
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </motion.button>
+
+        {/* Social proof */}
+        <motion.div
+          className="flex items-center justify-center gap-2 mt-6 mb-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.7 }}
+        >
+          <div className="w-[6px] h-[6px] rounded-full bg-[#D4799A]" />
+          <span style={{ color: '#6B6275', fontFamily: 'Space Grotesk, sans-serif', fontSize: '12px' }}>
+            96.7K stories started this week
+          </span>
+        </motion.div>
+      </div>
     </div>
   );
 }
