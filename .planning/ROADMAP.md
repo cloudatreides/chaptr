@@ -64,7 +64,7 @@ Plans:
 Plans:
 - [x] 03-01: Reader Layout + Scene States — screen structure, progress bar, scene image, loading shimmer/spinner/skeleton, protagonist overlay (VIZ-01, VIZ-02)
 - [x] 03-02: Typewriter + Choice Mechanic — typewriter hook, two-tap skip, choice rendering, selected/unchosen states, gem badge, locked gate bottom sheet
-- [ ] 03-03: Gem System + Your Story Sidebar — Zustand gem balance, deduction logic, Vaul sidebar (mobile bottom sheet + desktop panel), decision logging
+- [x] 03-03: Gem System + Your Story Sidebar — Zustand gem balance, deduction logic, Vaul sidebar (mobile bottom sheet + desktop panel), decision logging
 **UI hint**: yes
 
 ### Phase 4: Static Story Content

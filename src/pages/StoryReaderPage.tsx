@@ -11,6 +11,7 @@ import LoadingSkeleton from '../components/reader/LoadingSkeleton';
 import TypewriterText from '../components/reader/TypewriterText';
 import ChoiceList from '../components/reader/ChoiceList';
 import GemGateSheet from '../components/reader/GemGateSheet';
+import YourStorySidebar from '../components/reader/YourStorySidebar';
 
 export default function StoryReaderPage() {
   const { chapterId } = useParams<{ chapterId: string }>();
@@ -93,11 +94,8 @@ export default function StoryReaderPage() {
         showOverlay={currentBeat.isChapterStart}
         isLoading={isLoading}
       />
-      <div className="lg:grid lg:grid-cols-[280px_1fr_1fr]">
-        {/* Sidebar slot - Plan 03 fills this */}
-        <div className="hidden lg:block" />
-
-        {/* Reading column */}
+      {/* Content area, offset for sidebar on desktop */}
+      <div className="lg:pl-[280px]">
         <div className="mx-auto w-full max-w-[680px] px-5 lg:px-0 pb-20">
           <ReaderNavBar
             chapterTitle={chapter.title}
@@ -138,10 +136,10 @@ export default function StoryReaderPage() {
             </>
           )}
         </div>
-
-        {/* Right space */}
-        <div className="hidden lg:block" />
       </div>
+
+      {/* Sidebar renders itself (fixed positioning) */}
+      <YourStorySidebar />
 
       <GemGateSheet
         open={gemGateOpen}
