@@ -15,20 +15,41 @@ const itemVariants = {
 const STEPS = [
   {
     num: '01',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+      </svg>
+    ),
     title: 'Upload your photo',
     desc: 'Your face becomes the protagonist. Private — never stored beyond your session.',
   },
   {
     num: '02',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+        <path d="M2 17l10 5 10-5" />
+        <path d="M2 12l10 5 10-5" />
+      </svg>
+    ),
     title: 'Choose your universe',
     desc: 'K-pop romance, mystery, horror. Pick a world and step inside it.',
   },
   {
     num: '03',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
+      </svg>
+    ),
     title: 'Live the story',
     desc: 'Every choice shapes the narrative. AI writes prose that remembers who you are.',
   },
 ];
+
+const TRUST_PILLS = ['No account needed', 'Free to start', 'Your photo stays private'];
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -46,10 +67,10 @@ export default function LandingPage() {
       {/* ── HERO SECTION ── */}
       <div className="relative min-h-screen flex flex-col">
 
-        {/* Background image — full bleed */}
+        {/* Background image — full bleed, with fallback color */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/hero-bg.png')" }}
+          style={{ backgroundImage: "url('/hero-bg.png')", backgroundColor: '#1A1020' }}
         />
 
         {/* Top vignette */}
@@ -99,7 +120,7 @@ export default function LandingPage() {
           </motion.div>
 
           {/* Hero — two column on desktop */}
-          <div className="flex-1 flex items-end md:items-center pb-16 md:pb-0">
+          <div className="flex-1 flex items-end md:items-center pb-20 md:pb-0">
             <div className="w-full md:max-w-[600px]">
               <motion.div
                 className="flex flex-col gap-5"
@@ -123,7 +144,7 @@ export default function LandingPage() {
                   style={{
                     fontFamily: 'Space Grotesk, sans-serif',
                     fontSize: 'clamp(40px, 6vw, 72px)',
-                    letterSpacing: '-2px',
+                    letterSpacing: '-1.5px',
                     lineHeight: '0.95',
                   }}
                 >
@@ -144,20 +165,22 @@ export default function LandingPage() {
                   Upload your photo. AI writes an interactive story where you are the protagonist — every scene, every choice, every outcome.
                 </motion.p>
 
-                {/* Avatar stack + social proof */}
-                <motion.div variants={itemVariants} className="flex items-center gap-3">
-                  <div className="flex -space-x-2">
-                    {['#D4799A', '#9B7EC8', '#D4AF37', '#6B9EC8'].map((c, i) => (
-                      <div
-                        key={i}
-                        className="w-7 h-7 rounded-full border-2 border-[#0D0B12]"
-                        style={{ background: `radial-gradient(circle at 35% 35%, ${c}CC, ${c}66)` }}
-                      />
-                    ))}
-                  </div>
-                  <span style={{ color: '#6B6275', fontFamily: 'Space Grotesk, sans-serif', fontSize: '13px' }}>
-                    <span style={{ color: '#B0A8BF', fontWeight: 600 }}>96.7K</span> stories started this week
-                  </span>
+                {/* Trust pills */}
+                <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
+                  {TRUST_PILLS.map((pill) => (
+                    <span
+                      key={pill}
+                      className="text-[12px] px-3 py-1 rounded-full border"
+                      style={{
+                        color: '#8B8099',
+                        borderColor: '#2D2538',
+                        fontFamily: 'Space Grotesk, sans-serif',
+                        background: 'rgba(255,255,255,0.03)',
+                      }}
+                    >
+                      {pill}
+                    </span>
+                  ))}
                 </motion.div>
 
                 {/* CTA */}
@@ -181,74 +204,98 @@ export default function LandingPage() {
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </motion.button>
-                  <button
-                    className="h-[56px] px-8 rounded-[28px] text-[15px] font-medium border border-white/10 text-white/50 hover:text-white/80 hover:border-white/20 transition-colors hidden sm:flex items-center"
-                    style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-                    onClick={handleStart}
-                  >
-                    See a demo
-                  </button>
                 </motion.div>
               </motion.div>
             </div>
           </div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.5 }}
+          >
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3D3548" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 
       {/* ── HOW IT WORKS ── */}
       <div className="max-w-[1440px] mx-auto w-full px-6 md:px-[60px] py-20 md:py-28">
-        <motion.p
-          className="text-[11px] font-semibold tracking-[2px] mb-4"
-          style={{ color: '#D4799A', fontFamily: 'Space Grotesk, sans-serif' }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          HOW IT WORKS
-        </motion.p>
-        <motion.h2
-          className="text-white font-bold mb-12 md:mb-16"
-          style={{
-            fontFamily: 'Space Grotesk, sans-serif',
-            fontSize: 'clamp(24px, 3vw, 40px)',
-            letterSpacing: '-0.5px',
-          }}
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          Three steps into your story
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-          {STEPS.map((step, i) => (
-            <motion.div
-              key={step.num}
-              className="flex flex-col gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
-            >
-              <span
-                className="font-bold"
-                style={{ color: '#D4799A', fontFamily: 'Space Grotesk, sans-serif', fontSize: '13px', letterSpacing: '1px' }}
+        <div className="max-w-[900px]">
+          <motion.p
+            className="text-[11px] font-semibold tracking-[2px] mb-4"
+            style={{ color: '#D4799A', fontFamily: 'Space Grotesk, sans-serif' }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            HOW IT WORKS
+          </motion.p>
+          <motion.h2
+            className="text-white font-bold mb-12 md:mb-16"
+            style={{
+              fontFamily: 'Space Grotesk, sans-serif',
+              fontSize: 'clamp(24px, 3vw, 40px)',
+              letterSpacing: '-0.5px',
+            }}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            Three steps into your story
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            {STEPS.map((step, i) => (
+              <motion.div
+                key={step.num}
+                className="flex flex-col gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.12 }}
               >
-                {step.num}
-              </span>
-              <div className="h-px w-12" style={{ background: 'linear-gradient(to right, #D4799A, #9B7EC8)' }} />
-              <h3
-                className="text-white font-semibold text-lg"
-                style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-              >
-                {step.title}
-              </h3>
-              <p style={{ color: '#6B6275', fontFamily: 'Space Grotesk, sans-serif', fontSize: '14px', lineHeight: '1.6' }}>
-                {step.desc}
-              </p>
-            </motion.div>
-          ))}
+                {/* Icon circle */}
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center"
+                  style={{
+                    background: 'linear-gradient(135deg, #D4799A22 0%, #9B7EC822 100%)',
+                    border: '1px solid #2D2538',
+                    color: '#D4799A',
+                  }}
+                >
+                  {step.icon}
+                </div>
+                <div>
+                  <span
+                    className="font-bold block mb-2"
+                    style={{ color: '#D4799A', fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', letterSpacing: '1.5px' }}
+                  >
+                    {step.num}
+                  </span>
+                  <h3
+                    className="text-white font-semibold text-lg mb-2"
+                    style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p style={{ color: '#6B6275', fontFamily: 'Space Grotesk, sans-serif', fontSize: '14px', lineHeight: '1.6' }}>
+                    {step.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
 
