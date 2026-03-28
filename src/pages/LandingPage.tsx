@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router';
+import { useChaptrStore } from '../store/useChaptrStore';
 
 const containerVariants = {
   hidden: {},
@@ -13,6 +14,8 @@ const itemVariants = {
 
 export default function LandingPage() {
   const navigate = useNavigate();
+  const selfieUrl = useChaptrStore((s) => s.selfieUrl);
+  const triggerSelfiePrompt = useChaptrStore((s) => s.triggerSelfiePrompt);
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#0D0B12]">
@@ -126,7 +129,10 @@ export default function LandingPage() {
           transition={{ duration: 0.5, delay: 0.5 }}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          onClick={() => navigate('/upload')}
+          onClick={() => {
+            navigate('/universes');
+            if (!selfieUrl) triggerSelfiePrompt();
+          }}
         >
           Start Your Story
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
