@@ -96,7 +96,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 05-01: Claude API Client — streaming SSE client with buffer guard, system prompt architecture (Character Bible + Story State Block + Prose Style Constraints + Chapter Brief), prohibited prose list
+- [x] 05-01: Claude API Client — streaming SSE client with buffer guard, system prompt architecture (Character Bible + Story State Block + Prose Style Constraints + Chapter Brief), prohibited prose list
 - [ ] 05-02: Story Engine Integration — replace static DialogueNodes with AI calls, inject choice history per call, wire streaming output to typewriter renderer
 
 ## Progress

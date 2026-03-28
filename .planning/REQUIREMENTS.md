@@ -58,13 +58,13 @@
 
 ### AI Story Engine
 
-- [ ] **AI-01**: Claude API integration using `claude-haiku-4-5` model (NOT `claude-3-haiku-20240307` which retires April 19, 2026)
-- [ ] **AI-02**: Direct browser API calls via `anthropic-dangerous-direct-browser-access: true` header (acceptable for PoC)
-- [ ] **AI-03**: System prompt architecture: Character Bible (static) + Story State Block (dynamic, injected per call) + Prose Style Constraints + Chapter Brief
-- [ ] **AI-04**: App manages all story state; Claude generates prose only — never ask Claude to decide gem gates or choice outcomes
-- [ ] **AI-05**: Streaming response rendered progressively via SSE; buffer maintained across `reader.read()` chunks to prevent JSON parse errors on split events
-- [ ] **AI-06**: Story choices made by user stored in Zustand and injected into every subsequent Claude system prompt for narrative continuity
-- [ ] **AI-07**: Prohibited prose list enforced in system prompt (ban: "her heart skipped a beat", "suddenly", "she couldn't help but")
+- [x] **AI-01**: Claude API integration using `claude-haiku-4-5` model (NOT `claude-3-haiku-20240307` which retires April 19, 2026)
+- [x] **AI-02**: Direct browser API calls via `anthropic-dangerous-direct-browser-access: true` header (acceptable for PoC)
+- [x] **AI-03**: System prompt architecture: Character Bible (static) + Story State Block (dynamic, injected per call) + Prose Style Constraints + Chapter Brief
+- [x] **AI-04**: App manages all story state; Claude generates prose only — never ask Claude to decide gem gates or choice outcomes
+- [x] **AI-05**: Streaming response rendered progressively via SSE; buffer maintained across `reader.read()` chunks to prevent JSON parse errors on split events
+- [x] **AI-06**: Story choices made by user stored in Zustand and injected into every subsequent Claude system prompt for narrative continuity
+- [x] **AI-07**: Prohibited prose list enforced in system prompt (ban: "her heart skipped a beat", "suddenly", "she couldn't help but")
 
 ### Protagonist Visuals
 
@@ -157,13 +157,13 @@
 | STORY-02 | Phase 4 | Complete |
 | STORY-03 | Phase 4 | Complete |
 | STORY-04 | Phase 4 | Complete |
-| AI-01 | Phase 5 | Pending |
-| AI-02 | Phase 5 | Pending |
-| AI-03 | Phase 5 | Pending |
-| AI-04 | Phase 5 | Pending |
-| AI-05 | Phase 5 | Pending |
-| AI-06 | Phase 5 | Pending |
-| AI-07 | Phase 5 | Pending |
+| AI-01 | Phase 5 | Complete |
+| AI-02 | Phase 5 | Complete |
+| AI-03 | Phase 5 | Complete |
+| AI-04 | Phase 5 | Complete |
+| AI-05 | Phase 5 | Complete |
+| AI-06 | Phase 5 | Complete |
+| AI-07 | Phase 5 | Complete |
 | DESK-01 | Phase 3 | Complete |
 | DESK-02 | Phase 1 | Pending |
 
