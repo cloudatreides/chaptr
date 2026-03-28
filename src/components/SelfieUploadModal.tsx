@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router';
 import Cropper from 'react-easy-crop';
 import type { Area } from 'react-easy-crop';
 import { getCroppedImg } from '../lib/cropImage';
@@ -10,6 +11,7 @@ type ModalStep = 'primer' | 'crop';
 export default function SelfieUploadModal() {
   const setSelfie = useChaptrStore((s) => s.setSelfie);
   const dismissSelfiePrompt = useChaptrStore((s) => s.dismissSelfiePrompt);
+  const navigate = useNavigate();
 
   const [step, setStep] = useState<ModalStep>('primer');
   const [imageSrc, setImageSrc] = useState<string | null>(null);
@@ -42,6 +44,7 @@ export default function SelfieUploadModal() {
       const croppedBase64 = await getCroppedImg(imageSrc, croppedAreaPixels);
       setSelfie(croppedBase64);
       dismissSelfiePrompt();
+      navigate('/universes');
     } catch {
       setError(true);
     }
@@ -66,7 +69,7 @@ export default function SelfieUploadModal() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          onClick={dismissSelfiePrompt}
+          onClick={() => { dismissSelfiePrompt(); navigate('/universes'); }}
         />
 
         {/* Panel */}
@@ -99,7 +102,7 @@ export default function SelfieUploadModal() {
               </button>
               <button
                 className="text-muted font-sans text-sm hover:underline mt-4 mx-auto block"
-                onClick={dismissSelfiePrompt}
+                onClick={() => { dismissSelfiePrompt(); navigate('/universes'); }}
               >
                 Use an illustrated avatar instead
               </button>

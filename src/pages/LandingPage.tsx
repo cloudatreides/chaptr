@@ -126,7 +126,7 @@ export default function LandingPage() {
           transition={{ duration: 0.5, delay: 0.5 }}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          onClick={() => navigate('/universes')}
+          onClick={() => navigate('/upload')}
         >
           Start Your Story
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

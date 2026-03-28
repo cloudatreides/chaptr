@@ -124,7 +124,8 @@ export default function UniversesPage() {
             u.active ? (
               <motion.div key={u.id} variants={itemVariants}>
                 <motion.div
-                  className={`bg-gradient-to-br ${u.gradientFrom} ${u.gradientTo} rounded-xl p-6 cursor-pointer focus-visible:ring-2 focus-visible:ring-rose-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base`}
+                  className="relative rounded-xl overflow-hidden cursor-pointer focus-visible:ring-2 focus-visible:ring-rose-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base"
+                  style={{ height: 200 }}
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.15 }}
                   onClick={() => navigate('/story/chapter-1')}
@@ -137,15 +138,13 @@ export default function UniversesPage() {
                     }
                   }}
                 >
-                  <span className="text-rose-accent text-sm font-sans">
-                    {u.genre}
-                  </span>
-                  <h2 className="text-text-primary font-semibold text-xl font-sans mt-1">
-                    {u.title}
-                  </h2>
-                  <p className="text-muted text-base font-sans mt-2 line-clamp-2">
-                    {u.premise}
-                  </p>
+                  <img src="/seoul-transfer-card.jpeg" alt={u.title} className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 30%, #1A1624FF 100%)' }} />
+                  <div className="absolute bottom-0 left-0 p-4">
+                    <span className="text-rose-accent text-xs font-sans font-semibold tracking-wide">{u.genre.toUpperCase()}</span>
+                    <h2 className="text-text-primary font-semibold text-lg font-sans mt-1">{u.title}</h2>
+                    <p className="text-muted text-sm font-sans mt-1 line-clamp-2">{u.premise}</p>
+                  </div>
                 </motion.div>
               </motion.div>
             ) : (
