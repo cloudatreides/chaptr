@@ -70,6 +70,7 @@ export const chapter1: Chapter = {
     },
     'beat-2c': {
       id: 'beat-2c',
+      sceneImage: '/scene-studio.jpeg',
       text: 'Jiwoo blinks. Once. Then a slow grin breaks out -- the kind that has launched a thousand fan edits. "Lost?" he repeats, tilting his head. "In my own building?" He pushes off the pillar and closes the distance between you in two easy strides. Up close, he is taller than the photos suggest, and there is a warmth behind the stage presence that the cameras never quite capture. "You are the transfer," he says -- not a question. "They said you would be interesting." He reaches into his jacket pocket and produces a slim black card. "Studio B. Third floor. Do not be late." He drops the card into [Name]\'s hand and walks away without looking back.',
       sceneGradient: 'bg-gradient-to-b from-[#D4AF37]/20 via-[#9B7EC8]/15 to-[#0D0B12]',
       choices: [
@@ -79,6 +80,7 @@ export const chapter1: Chapter = {
     },
     'beat-3': {
       id: 'beat-3',
+      sceneImage: '/scene-studio.jpeg',
       text: 'The elevator ascends in silence. [Name] watches the floor numbers tick upward -- one, two, three. Even before the doors open, you can hear it: a pulsing bassline moving through the walls like a second heartbeat. The doors part onto a wide corridor. Frosted glass panels line both sides, each one labeled in clean white text: Studio A, Studio B, Studio C. Through the glass of Studio B, shapes move in unison -- arms extending, bodies pivoting, a choreography so locked in it looks like a single organism. The music stops. Then starts again from the top. You realize your feet have not moved since the elevator doors opened.',
       sceneGradient: 'bg-gradient-to-b from-[#6B9EC8]/20 via-[#9B7EC8]/10 to-[#0D0B12]',
       choices: [],
@@ -86,6 +88,7 @@ export const chapter1: Chapter = {
     },
     'beat-4': {
       id: 'beat-4',
+      sceneImage: '/scene-studio.jpeg',
       text: '[Name] walks the corridor. The music from Studio B grows louder with each step -- something harder-edged than the polished singles VEIL releases publicly. A track you have not heard before. You are almost at the door when a voice comes from behind you. "Took you long enough." Jiwoo is already there, leaning against the Studio B door frame, arms crossed, watching you approach with an expression you cannot read. He pushes off the frame as [Name] reaches him, not moving to block the way -- just marking the moment. "First time seeing them run a set?" He does not wait for an answer. He pushes the door open and holds it. The music spills out into the corridor like a wave.',
       sceneGradient: 'bg-gradient-to-b from-[#6B9EC8]/20 via-[#D4799A]/10 to-[#0D0B12]',
       choices: [
@@ -95,6 +98,7 @@ export const chapter1: Chapter = {
     },
     'beat-5': {
       id: 'beat-5',
+      sceneImage: '/scene-studio.jpeg',
       text: 'VEIL is in the middle of a run-through. Four members, synchronized down to the breath. The track is one [Name] does not recognize -- something with a lower register than their released work, more urgent. A choreographer stands at the mirror wall calling counts under the music. Jiwoo lets the door close softly behind you and moves to his position like you are not there. But you catch his reflection in the mirror glancing over once -- brief, deliberate, unreadable. One of the other members notices you standing at the edge of the room and offers a short nod. Not unfriendly. Just acknowledging. This is Studio B. This is where NOVA Entertainment makes stars. Whether [Name] belongs here is still an open question -- but the question itself feels like a beginning rather than a doubt.',
       sceneGradient: 'bg-gradient-to-b from-[#D4799A]/25 via-[#9B7EC8]/15 to-[#0D0B12]',
       choices: [],
