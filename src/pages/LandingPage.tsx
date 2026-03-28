@@ -41,7 +41,7 @@ export default function LandingPage() {
       />
 
       {/* Content layer */}
-      <div className="relative z-10 flex flex-col min-h-screen px-6">
+      <div className="relative z-10 flex flex-col min-h-screen px-6 max-w-[430px] mx-auto w-full">
 
         {/* Logo — top left */}
         <motion.div
