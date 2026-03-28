@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import type { StoryChoice } from '../../data/mockStoryData';
+import type { StoryChoice } from '../../data/chapter1';
 import { useChaptrStore } from '../../store/useChaptrStore';
 import ChoiceButton from './ChoiceButton';
 

@@ -3,6 +3,7 @@ type SceneImageProps = {
   selfieUrl?: string | null;
   showOverlay?: boolean;
   isLoading?: boolean;
+  gradientClass?: string;  // overrides default gradient fallback when src is undefined
 };
 
 export default function SceneImage({
@@ -10,6 +11,7 @@ export default function SceneImage({
   selfieUrl,
   showOverlay,
   isLoading,
+  gradientClass,
 }: SceneImageProps) {
   return (
     <div className="relative h-[40vh] w-full overflow-hidden bg-surface">
@@ -21,7 +23,7 @@ export default function SceneImage({
       ) : src ? (
         <img src={src} alt="Scene" className="h-full w-full object-cover" />
       ) : (
-        <div className="h-full w-full bg-gradient-to-b from-purple-accent/20 to-base" />
+        <div className={`h-full w-full ${gradientClass ?? 'bg-gradient-to-b from-purple-accent/20 to-base'}`} />
       )}
 
       {/* Gradient overlay for text readability */}

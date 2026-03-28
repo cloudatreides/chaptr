@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { useParams } from 'react-router';
 import { useChaptrStore } from '../store/useChaptrStore';
 import { useTypewriter } from '../hooks/useTypewriter';
-import { mockChapter1 } from '../data/mockStoryData';
-import type { StoryChoice } from '../data/mockStoryData';
+import { chapter1 } from '../data/chapter1';
+import type { StoryChoice } from '../data/chapter1';
 import ProgressBar from '../components/reader/ProgressBar';
 import SceneImage from '../components/reader/SceneImage';
 import ReaderNavBar from '../components/reader/ReaderNavBar';
@@ -12,6 +13,7 @@ import TypewriterText from '../components/reader/TypewriterText';
 import ChoiceList from '../components/reader/ChoiceList';
 import GemGateSheet from '../components/reader/GemGateSheet';
 import YourStorySidebar from '../components/reader/YourStorySidebar';
+import NamePromptModal from '../components/NamePromptModal';
 
 export default function StoryReaderPage() {
   const { chapterId: _chapterId } = useParams<{ chapterId: string }>();
@@ -20,12 +22,15 @@ export default function StoryReaderPage() {
   const toggleSidebar = useChaptrStore((s) => s.toggleSidebar);
   const gemBalance = useChaptrStore((s) => s.gemBalance);
 
-  // For PoC, use mock data
-  const chapter = mockChapter1;
+  // For PoC, use static story data
+  const chapter = chapter1;
   const [currentBeatId, setCurrentBeatId] = useState(chapter.startBeatId);
   const currentBeat = chapter.beats[currentBeatId];
   const [selectedChoiceId, setSelectedChoiceId] = useState<string | null>(null);
   const [isLoading] = useState(false);
+
+  // Name prompt modal — shown when userName is null
+  const [showNamePrompt, setShowNamePrompt] = useState(userName === null);
 
   // Gem gate sheet state
   const [gemGateOpen, setGemGateOpen] = useState(false);
@@ -93,6 +98,7 @@ export default function StoryReaderPage() {
         selfieUrl={selfieUrl}
         showOverlay={currentBeat.isChapterStart}
         isLoading={isLoading}
+        gradientClass={currentBeat.sceneGradient}
       />
       {/* Content area, offset for sidebar on desktop */}
       <div className="lg:pl-[280px]">
@@ -112,12 +118,12 @@ export default function StoryReaderPage() {
                 isComplete={isComplete}
                 onSkip={completeInstantly}
                 onAdvance={() => {
-                  // Only advance on text tap if current beat has no choices (prose-only beats)
                   if (
                     currentBeat.choices.length === 0 &&
-                    !currentBeat.isChapterEnd
+                    !currentBeat.isChapterEnd &&
+                    currentBeat.nextBeatId
                   ) {
-                    // No auto-advance for prose-only beats without a defined next
+                    advanceBeat(currentBeat.nextBeatId);
                   }
                 }}
               />
@@ -137,6 +143,41 @@ export default function StoryReaderPage() {
           )}
         </div>
       </div>
+
+      {/* Chapter-end overlay — renders fixed on top when beat-5 reached */}
+      {currentBeat.isChapterEnd && (
+        <motion.div
+          className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-base/90 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <motion.h1
+            className="text-text-primary font-sans font-semibold text-3xl md:text-4xl text-center"
+            animate={{ opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            Chapter Complete
+          </motion.h1>
+          <p className="text-muted font-sans text-base text-center mt-4 max-w-xs">
+            Chapter 1: First Day
+          </p>
+          <p className="text-muted font-sans text-sm text-center mt-2 max-w-[280px]">
+            Your decisions are logged in Your Story. Chapter 2 coming soon.
+          </p>
+          <button
+            className="mt-8 text-rose-accent font-sans text-sm font-medium hover:underline"
+            onClick={toggleSidebar}
+          >
+            Review your story so far
+          </button>
+        </motion.div>
+      )}
+
+      {/* Name prompt modal — shown on first visit when userName is null */}
+      {showNamePrompt && (
+        <NamePromptModal onClose={() => setShowNamePrompt(false)} />
+      )}
 
       {/* Sidebar renders itself (fixed positioning) */}
       <YourStorySidebar />

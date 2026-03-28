@@ -1,4 +1,4 @@
-import type { StoryChoice } from '../../data/mockStoryData';
+import type { StoryChoice } from '../../data/chapter1';
 
 type ChoiceButtonProps = {
   choice: StoryChoice;
