@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Camera } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import { useChaptrStore } from '../store/useChaptrStore';
 
@@ -12,8 +13,6 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
 };
 
-const TRUST_PILLS = ['No account needed', 'Free to start', 'Your photo stays private'];
-
 const GENRES = [
   { emoji: '💌', label: 'Romance', sub: 'K-pop world · Jiwoo', color: '#D4799A', bg: '#D4799A14', border: '#D4799A30' },
   { emoji: '🕯', label: 'Horror', sub: 'Abandoned theater · Dark secrets', color: '#9B7EC8', bg: '#9B7EC814', border: '#9B7EC830' },
@@ -23,6 +22,27 @@ const GENRES = [
 const PREVIEW_CHOICES = [
   { text: 'Introduce yourself and walk to reception →', active: true },
   { text: 'Hang back and observe quietly', active: false },
+];
+
+const STEPS = [
+  {
+    chapter: 'Chapter I',
+    title: 'Upload your photo',
+    desc: 'Your face becomes the protagonist. Private — never stored beyond your session.',
+    visual: 'portrait',
+  },
+  {
+    chapter: 'Chapter II',
+    title: 'Choose your world',
+    desc: 'K-pop romance, mystery, horror. Step inside a genre and make it yours.',
+    visual: 'genres',
+  },
+  {
+    chapter: 'Chapter III',
+    title: 'Live inside the story',
+    desc: 'Every choice shapes what happens next. AI writes prose that remembers who you are.',
+    visual: 'prose',
+  },
 ];
 
 export default function LandingPage() {
@@ -40,19 +60,15 @@ export default function LandingPage() {
 
       {/* ── HERO ── */}
       <div className="relative min-h-screen flex flex-col">
-
-        {/* BG image */}
         <div
           className="absolute inset-0 bg-cover bg-top bg-no-repeat"
           style={{ backgroundImage: "url('/hero-bg.png')", backgroundColor: '#1A1020' }}
         />
-        {/* Overlay gradient — fades image into dark, heavier at bottom */}
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(to bottom, #0D0B12BB 0%, #0D0B1200 25%, #0D0B1200 40%, #0D0B12FF 80%)' }}
+          style={{ background: 'linear-gradient(to bottom, #0D0B12AA 0%, #0D0B1200 20%, #0D0B1200 40%, #0D0B12FF 80%)' }}
         />
 
-        {/* Content wrapper */}
         <div className="relative z-10 flex flex-col min-h-screen max-w-[1440px] mx-auto w-full px-6 md:px-[60px]">
 
           {/* Nav */}
@@ -71,7 +87,7 @@ export default function LandingPage() {
               <span className="text-white font-medium text-[18px]" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>chaptr</span>
             </div>
             <button
-              className="hidden md:block text-[14px] font-semibold text-white/60 hover:text-white transition-colors"
+              className="hidden md:block text-[14px] font-semibold text-white/50 hover:text-white/90 transition-colors"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
               onClick={handleStart}
             >
@@ -79,11 +95,11 @@ export default function LandingPage() {
             </button>
           </motion.div>
 
-          {/* Hero body — bottom-anchored, two-column on desktop */}
+          {/* Hero body */}
           <div className="flex-1 flex items-end pb-[10vh] md:pb-[80px]">
             <div className="w-full flex flex-col md:flex-row md:items-end md:justify-between gap-10 md:gap-16">
 
-              {/* Left column */}
+              {/* Left */}
               <motion.div
                 className="flex flex-col gap-6 md:w-[580px]"
                 variants={containerVariants}
@@ -98,36 +114,35 @@ export default function LandingPage() {
                   AI · INTERACTIVE · PERSONALIZED
                 </motion.p>
 
-                <motion.div variants={itemVariants}>
-                  <h1
-                    className="text-white font-bold leading-[0.92]"
-                    style={{
-                      fontFamily: 'Playfair Display, Georgia, serif',
-                      fontSize: 'clamp(52px, 5.5vw, 72px)',
-                      letterSpacing: '-2px',
-                    }}
-                  >
-                    Your face.<br />Your story.
-                  </h1>
-                </motion.div>
+                <motion.h1
+                  variants={itemVariants}
+                  className="text-white font-bold leading-[0.92]"
+                  style={{
+                    fontFamily: 'Playfair Display, Georgia, serif',
+                    fontSize: 'clamp(52px, 5.5vw, 72px)',
+                    letterSpacing: '-2px',
+                  }}
+                >
+                  Your face.<br />Your story.
+                </motion.h1>
 
                 <motion.p
                   variants={itemVariants}
-                  className="text-[16px] leading-relaxed max-w-[400px]"
+                  className="text-[16px] max-w-[400px]"
                   style={{ color: '#B0A8BF', fontFamily: 'Space Grotesk, sans-serif', lineHeight: '1.65' }}
                 >
-                  Upload your photo. AI writes an interactive story where you are the protagonist — every scene, every choice, every outcome.
+                  Upload a photo. Step inside a world. Become the one they all write about.
                 </motion.p>
 
                 <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
-                  {TRUST_PILLS.map((pill) => (
+                  {['No account needed', 'Free to start', 'Private by design'].map((pill) => (
                     <span
                       key={pill}
                       className="text-[12px] px-[14px] py-[6px] rounded-full"
                       style={{
                         color: '#8B8099',
                         border: '1px solid #2D2538',
-                        background: 'rgba(255,255,255,0.03)',
+                        background: 'rgba(255,255,255,0.02)',
                         fontFamily: 'Space Grotesk, sans-serif',
                       }}
                     >
@@ -147,7 +162,7 @@ export default function LandingPage() {
                     whileTap={{ scale: 0.97 }}
                     onClick={handleStart}
                   >
-                    Start Your Story
+                    Begin Your Story
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
@@ -155,7 +170,7 @@ export default function LandingPage() {
                 </motion.div>
               </motion.div>
 
-              {/* Right column — story preview card, desktop only */}
+              {/* Right — story preview card */}
               <motion.div
                 className="hidden md:block w-[380px] shrink-0"
                 initial={{ opacity: 0, y: 28 }}
@@ -165,31 +180,25 @@ export default function LandingPage() {
                 <div
                   className="rounded-2xl p-6 flex flex-col gap-4"
                   style={{
-                    background: 'rgba(20, 16, 30, 0.85)',
+                    background: 'rgba(20, 16, 30, 0.88)',
                     border: '1px solid rgba(255,255,255,0.07)',
-                    backdropFilter: 'blur(16px)',
+                    backdropFilter: 'blur(20px)',
                   }}
                 >
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#D4799A]" />
-                    <span
-                      className="text-[10px] font-semibold tracking-[1.5px]"
-                      style={{ color: '#6B6275', fontFamily: 'Space Grotesk, sans-serif' }}
-                    >
+                    <span className="text-[10px] font-semibold tracking-[1.5px]" style={{ color: '#6B6275', fontFamily: 'Space Grotesk, sans-serif' }}>
                       CHAPTER 1 · THE SEOUL TRANSFER
                     </span>
                   </div>
-                  <p
-                    className="text-[13px] leading-[1.75]"
-                    style={{ color: '#B0A8BF', fontFamily: 'Space Grotesk, sans-serif' }}
-                  >
-                    "You step through the glass doors of NOVA Entertainment and the world shifts. A tall figure leans against the far pillar, watching you with sharp, curious eyes — and he is looking directly at you."
+                  <p className="text-[13px] leading-[1.8] italic" style={{ color: '#B0A8BF', fontFamily: 'Playfair Display, Georgia, serif' }}>
+                    "You step through the glass doors of NOVA Entertainment and the world shifts. A tall figure leans against the far pillar — and he is looking directly at you."
                   </p>
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 mt-1">
                     {PREVIEW_CHOICES.map((c, i) => (
                       <div
                         key={i}
-                        className="text-[13px] px-4 py-2.5 rounded-xl"
+                        className="text-[12px] px-4 py-2.5 rounded-xl"
                         style={{
                           color: c.active ? '#D4799A' : '#6B6275',
                           background: c.active ? '#D4799A14' : 'rgba(255,255,255,0.03)',
@@ -221,11 +230,10 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* ── HOW IT WORKS ── */}
+      {/* ── THE STORY SO FAR ── */}
       <div className="bg-[#0D0B12] py-[100px]">
         <div className="max-w-[1440px] mx-auto px-6 md:px-[120px]">
 
-          {/* Header */}
           <motion.div
             className="mb-16"
             initial={{ opacity: 0, y: 16 }}
@@ -233,123 +241,115 @@ export default function LandingPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-[11px] font-semibold tracking-[2px] mb-4" style={{ color: '#D4799A', fontFamily: 'Space Grotesk, sans-serif' }}>
-              HOW IT WORKS
+            <p className="text-[11px] font-semibold tracking-[2px] mb-4" style={{ color: '#D4799A88', fontFamily: 'Space Grotesk, sans-serif' }}>
+              THE STORY SO FAR
             </p>
             <h2
               className="text-white font-bold"
               style={{ fontFamily: 'Playfair Display, Georgia, serif', fontSize: 'clamp(28px, 3vw, 40px)', letterSpacing: '-1px' }}
             >
-              Three steps into your story
+              How the story begins
             </h2>
           </motion.div>
 
-          {/* Three columns */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
 
-            {/* Step 01 — Upload photo */}
-            <motion.div
-              className="flex flex-col gap-6"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0 }}
-            >
-              {/* Visual — photo collage */}
-              <div
-                className="w-full h-[200px] rounded-2xl overflow-hidden"
-                style={{ background: '#1A1624', border: '1px solid #2D2538' }}
+            {STEPS.map((step, i) => (
+              <motion.div
+                key={step.chapter}
+                className="flex flex-col gap-6"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.12 }}
               >
-                <img
-                  src="/scene-studio.jpeg"
-                  alt="Story scene"
-                  className="w-full h-full object-cover opacity-80"
-                />
-              </div>
-              <div className="flex flex-col gap-3">
-                <span className="text-[11px] font-semibold tracking-[2px]" style={{ color: '#D4799A', fontFamily: 'Space Grotesk, sans-serif' }}>01</span>
-                <h3 className="text-white font-semibold text-[20px]" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>Upload your photo</h3>
-                <p className="text-[14px] leading-[1.65]" style={{ color: '#6B6275', fontFamily: 'Space Grotesk, sans-serif' }}>
-                  Your face becomes the protagonist. Private — never stored beyond your session.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Step 02 — Choose universe */}
-            <motion.div
-              className="flex flex-col gap-6"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.12 }}
-            >
-              {/* Visual — genre cards */}
-              <div
-                className="w-full h-[200px] rounded-2xl p-5 flex flex-col justify-center gap-2.5"
-                style={{ background: '#1A1624', border: '1px solid #2D2538' }}
-              >
-                {GENRES.map((g) => (
+                {/* Visual */}
+                {step.visual === 'portrait' && (
                   <div
-                    key={g.label}
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl"
-                    style={{ background: g.bg, border: `1px solid ${g.border}` }}
+                    className="w-full h-[200px] rounded-2xl flex flex-col items-center justify-center gap-3"
+                    style={{ background: '#14101E', border: '1px solid #3D2538' }}
                   >
-                    <span className="text-[18px] leading-none">{g.emoji}</span>
-                    <div>
-                      <div className="text-[13px] font-semibold" style={{ color: g.color, fontFamily: 'Space Grotesk, sans-serif' }}>{g.label}</div>
-                      <div className="text-[11px]" style={{ color: '#6B6275', fontFamily: 'Space Grotesk, sans-serif' }}>{g.sub}</div>
+                    <div
+                      className="w-[88px] h-[88px] rounded-full flex items-center justify-center"
+                      style={{ border: '2px solid #D4799A44', background: '#0D0B12' }}
+                    >
+                      <Camera size={28} color="#D4799A88" />
+                    </div>
+                    <span className="text-[12px]" style={{ color: '#6B6275', fontFamily: 'Space Grotesk, sans-serif' }}>
+                      Your face goes here
+                    </span>
+                    <span className="text-[11px]" style={{ color: '#3D3548', fontFamily: 'Space Grotesk, sans-serif' }}>
+                      — and you become the protagonist
+                    </span>
+                  </div>
+                )}
+
+                {step.visual === 'genres' && (
+                  <div
+                    className="w-full h-[200px] rounded-2xl p-5 flex flex-col justify-center gap-2.5"
+                    style={{ background: '#14101E', border: '1px solid #2D2538' }}
+                  >
+                    {GENRES.map((g) => (
+                      <div
+                        key={g.label}
+                        className="flex items-center gap-3 px-4 py-2.5 rounded-xl"
+                        style={{ background: g.bg, border: `1px solid ${g.border}` }}
+                      >
+                        <span className="text-[16px] leading-none">{g.emoji}</span>
+                        <div>
+                          <div className="text-[13px] font-semibold" style={{ color: g.color, fontFamily: 'Space Grotesk, sans-serif' }}>{g.label}</div>
+                          <div className="text-[11px]" style={{ color: '#6B6275', fontFamily: 'Space Grotesk, sans-serif' }}>{g.sub}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {step.visual === 'prose' && (
+                  <div
+                    className="w-full h-[200px] rounded-2xl p-5 flex flex-col justify-between"
+                    style={{ background: '#0F0C18', border: '1px solid #2D2538' }}
+                  >
+                    <p
+                      className="text-[12px] leading-[1.8] italic flex-1"
+                      style={{ color: '#8B8099', fontFamily: 'Playfair Display, Georgia, serif' }}
+                    >
+                      "The elevator opens onto a wide corridor. Through frosted glass, shapes move in unison — a choreography so locked it looks like a single organism. The music stops. Then starts again."
+                    </p>
+                    <div
+                      className="text-[12px] px-3 py-2 rounded-lg mt-3 shrink-0"
+                      style={{
+                        color: '#D4799A',
+                        background: '#D4799A0F',
+                        border: '1px solid #D4799A25',
+                        fontFamily: 'Space Grotesk, sans-serif',
+                      }}
+                    >
+                      Step through the door without hesitation →
                     </div>
                   </div>
-                ))}
-              </div>
-              <div className="flex flex-col gap-3">
-                <span className="text-[11px] font-semibold tracking-[2px]" style={{ color: '#D4799A', fontFamily: 'Space Grotesk, sans-serif' }}>02</span>
-                <h3 className="text-white font-semibold text-[20px]" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>Choose your universe</h3>
-                <p className="text-[14px] leading-[1.65]" style={{ color: '#6B6275', fontFamily: 'Space Grotesk, sans-serif' }}>
-                  K-pop romance, mystery, horror. Pick a world and step inside it.
-                </p>
-              </div>
-            </motion.div>
+                )}
 
-            {/* Step 03 — Live the story */}
-            <motion.div
-              className="flex flex-col gap-6"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.24 }}
-            >
-              {/* Visual — prose snippet */}
-              <div
-                className="w-full h-[200px] rounded-2xl p-5 flex flex-col justify-between"
-                style={{ background: '#0F0C18', border: '1px solid #2D2538' }}
-              >
-                <p
-                  className="text-[12px] leading-[1.75] flex-1"
-                  style={{ color: '#8B8099', fontFamily: 'Space Grotesk, sans-serif' }}
-                >
-                  "The elevator opens onto a wide corridor. Through Studio B's frosted glass, shapes move in unison — a choreography so locked it looks like a single organism. The music stops. Then starts again from the top."
-                </p>
-                <div
-                  className="text-[12px] px-3 py-2 rounded-lg mt-3 shrink-0"
-                  style={{
-                    color: '#D4799A',
-                    background: '#D4799A0F',
-                    border: '1px solid #D4799A25',
-                    fontFamily: 'Space Grotesk, sans-serif',
-                  }}
-                >
-                  Step through the door without hesitation →
+                {/* Text */}
+                <div className="flex flex-col gap-3">
+                  <span
+                    className="text-[10px] font-semibold tracking-[2px] uppercase"
+                    style={{ color: '#D4799A88', fontFamily: 'Space Grotesk, sans-serif' }}
+                  >
+                    {step.chapter}
+                  </span>
+                  <h3
+                    className="text-white font-bold text-[20px]"
+                    style={{ fontFamily: 'Playfair Display, Georgia, serif', letterSpacing: '-0.3px' }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p className="text-[14px] leading-[1.65]" style={{ color: '#6B6275', fontFamily: 'Space Grotesk, sans-serif' }}>
+                    {step.desc}
+                  </p>
                 </div>
-              </div>
-              <div className="flex flex-col gap-3">
-                <span className="text-[11px] font-semibold tracking-[2px]" style={{ color: '#D4799A', fontFamily: 'Space Grotesk, sans-serif' }}>03</span>
-                <h3 className="text-white font-semibold text-[20px]" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>Live the story</h3>
-                <p className="text-[14px] leading-[1.65]" style={{ color: '#6B6275', fontFamily: 'Space Grotesk, sans-serif' }}>
-                  Every choice shapes the narrative. AI writes prose that remembers who you are.
-                </p>
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
 
           </div>
         </div>
@@ -365,7 +365,7 @@ export default function LandingPage() {
           transition={{ duration: 0.5 }}
         >
           <div
-            className="rounded-2xl px-[80px] py-[64px] flex flex-col md:flex-row items-center justify-between gap-8"
+            className="rounded-2xl px-10 md:px-[80px] py-[64px] flex flex-col md:flex-row items-center justify-between gap-8"
             style={{
               background: 'linear-gradient(135deg, #1A1624 0%, #241E30 100%)',
               border: '1px solid #2D2538',
@@ -376,10 +376,10 @@ export default function LandingPage() {
                 className="text-white font-bold"
                 style={{ fontFamily: 'Playfair Display, Georgia, serif', fontSize: 'clamp(24px, 2.5vw, 32px)', letterSpacing: '-0.5px' }}
               >
-                Ready to be the main character?
+                Ready to open the next chapter?
               </h3>
               <p style={{ color: '#6B6275', fontFamily: 'Space Grotesk, sans-serif', fontSize: '14px' }}>
-                Free to start. No account needed.
+                Free to start. No account needed. Your story is waiting.
               </p>
             </div>
             <motion.button
@@ -392,7 +392,7 @@ export default function LandingPage() {
               whileTap={{ scale: 0.97 }}
               onClick={handleStart}
             >
-              Start Your Story →
+              Begin Your Story →
             </motion.button>
           </div>
         </motion.div>
