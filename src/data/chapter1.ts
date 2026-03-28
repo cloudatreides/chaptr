@@ -32,6 +32,7 @@ export const chapter1: Chapter = {
       id: 'beat-1',
       text: 'You step through the glass doors of NOVA Entertainment and the world shifts. The lobby is cavernous -- polished marble floors reflecting a constellation of recessed lights overhead. A reception desk curves like a crescent moon along the far wall, staffed by two women in matching black blazers who glance up in unison. To your left, a floor-to-ceiling LED wall cycles through VEIL comeback teasers. The air smells faintly of jasmine and ambition. A tall figure leans against the far pillar, arms crossed, watching you with sharp, curious eyes. It takes [Name] a full second to recognize him from the profiles -- that is Jiwoo, lead vocalist of VEIL, and he is looking directly at you.',
       isChapterStart: true,
+      sceneImage: '/scene-studio.jpeg',
       sceneGradient: 'bg-gradient-to-b from-[#D4AF37]/20 via-[#9B7EC8]/15 to-[#0D0B12]',
       choices: [
         { id: 'c1a', text: 'Introduce yourself confidently and walk toward the reception desk', gemCost: 0, nextBeatId: 'beat-2a' },
@@ -41,6 +42,7 @@ export const chapter1: Chapter = {
     },
     'beat-2a': {
       id: 'beat-2a',
+      sceneImage: '/scene-studio.jpeg',
       text: 'The room quiets as [Name] steps forward, heels clicking against the marble with a confidence that surprises even you. One of the receptionists raises an eyebrow -- not unkindly, but appraisingly. "Transfer student?" she asks before you even reach the desk. Behind you, you hear a low whistle. Jiwoo has pushed off the pillar and is walking in your direction, hands in his pockets, a half-smile playing at his lips. "Bold entrance," he says, just loud enough for you to hear. The receptionist slides a lanyard across the counter -- your trainee ID, your name printed in clean sans-serif beneath the NOVA logo.',
       sceneGradient: 'bg-gradient-to-b from-[#D4AF37]/20 via-[#9B7EC8]/15 to-[#0D0B12]',
       choices: [
@@ -50,6 +52,7 @@ export const chapter1: Chapter = {
     },
     'beat-2b': {
       id: 'beat-2b',
+      sceneImage: '/scene-studio.jpeg',
       text: '[Name] lingers near the glass doors, letting the lobby wash over you. From here you can see everything -- the practiced smiles of the staff, the security cameras tucked into ceiling corners, the way Jiwoo shifts his weight like someone used to being watched. A group of trainees bursts through a side corridor, laughing and shoving each other playfully. One of them -- shorter, with electric-blue streaks dyed through dark hair -- spots you and freezes mid-laugh. "Oh! You must be the new one," she says, breaking away from the group and bounding over. "I am Mina. Everyone has been talking about you."',
       sceneGradient: 'bg-gradient-to-b from-[#D4AF37]/20 via-[#9B7EC8]/15 to-[#0D0B12]',
       choices: [
@@ -59,6 +62,7 @@ export const chapter1: Chapter = {
     },
     'beat-2b-2': {
       id: 'beat-2b-2',
+      sceneImage: '/scene-studio.jpeg',
       text: 'Mina leads [Name] through the side corridor at a half-jog, chatting without pausing for breath. She tells you about the training schedule, the best vending machine on floor two, which senior trainees are warm versus which ones only seem that way. "Oh, and Jiwoo -- he is not as cold as he looks, once you are actually in his orbit. Most people never get that far." She says it lightly, like a footnote. You reach the elevator at the end of the corridor. Mina hits the button for floor three and shoots you a quick sideways look. "Whatever nerves you brought with you today -- do not let them show. Not on day one."',
       sceneGradient: 'bg-gradient-to-b from-[#9B7EC8]/20 via-[#6B9EC8]/10 to-[#0D0B12]',
       choices: [],
