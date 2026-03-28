@@ -8,8 +8,8 @@ Five phases deliver a complete AI interactive story PoC. Foundation scaffolds th
 
 - [x] **Phase 1: Foundation** - Project scaffold, design system, routing, and state store
 - [x] **Phase 2: Onboarding Flow** - Landing page, universe selection, and selfie upload
-- [ ] **Phase 3: Core Reading Loop** - Story reader, typewriter, choices, gems, sidebar, and desktop layout
-- [ ] **Phase 4: Static Story Content** - Authored Chapter 1 wired to story state machine, fully playable
+- [x] **Phase 3: Core Reading Loop** - Story reader, typewriter, choices, gems, sidebar, and desktop layout
+- [x] **Phase 4: Static Story Content** - Authored Chapter 1 wired to story state machine, fully playable
 - [ ] **Phase 5: AI Story Engine** - Claude Haiku integration replacing static nodes with streamed prose
 
 ## Phase Details
@@ -81,7 +81,7 @@ Plans:
 
 Plans:
 - [x] 04-01-PLAN.md — Story state machine: extend types with nextBeatId, create chapter1.ts skeleton, fix READ-03 onAdvance, delete mockStoryData.ts, Wave 0 test stubs
-- [ ] 04-02-PLAN.md — Chapter 1 content: full 9-beat prose authoring, scene gradients, NamePromptModal, chapter-end overlay, human playthrough verification
+- [x] 04-02-PLAN.md — Chapter 1 content: full 9-beat prose authoring, scene gradients, NamePromptModal, chapter-end overlay, human playthrough verification
 
 ### Phase 5: AI Story Engine
 **Goal**: Claude Haiku streams prose for every story beat; the static Chapter 1 graph becomes the seed prompt structure; choice history flows into every call for narrative continuity
@@ -105,8 +105,8 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/2 | Not started | - |
-| 2. Onboarding Flow | 0/2 | Not started | - |
-| 3. Core Reading Loop | 2/3 | In Progress|  |
-| 4. Static Story Content | 1/2 | In Progress|  |
+| 1. Foundation | 2/2 | Complete | 2026-03-27 |
+| 2. Onboarding Flow | 2/2 | Complete | 2026-03-27 |
+| 3. Core Reading Loop | 3/3 | Complete | 2026-03-27 |
+| 4. Static Story Content | 2/2 | Complete | 2026-03-28 |
 | 5. AI Story Engine | 0/2 | Not started | - |
