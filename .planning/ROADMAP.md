@@ -10,7 +10,7 @@ Five phases deliver a complete AI interactive story PoC. Foundation scaffolds th
 - [x] **Phase 2: Onboarding Flow** - Landing page, universe selection, and selfie upload
 - [x] **Phase 3: Core Reading Loop** - Story reader, typewriter, choices, gems, sidebar, and desktop layout
 - [x] **Phase 4: Static Story Content** - Authored Chapter 1 wired to story state machine, fully playable
-- [ ] **Phase 5: AI Story Engine** - Claude Haiku integration replacing static nodes with streamed prose
+- [x] **Phase 5: AI Story Engine** - Claude Haiku integration replacing static nodes with streamed prose
 
 ## Phase Details
 
@@ -97,7 +97,7 @@ Plans:
 
 Plans:
 - [x] 05-01: Claude API Client — streaming SSE client with buffer guard, system prompt architecture (Character Bible + Story State Block + Prose Style Constraints + Chapter Brief), prohibited prose list
-- [ ] 05-02: Story Engine Integration — replace static DialogueNodes with AI calls, inject choice history per call, wire streaming output to typewriter renderer
+- [x] 05-02: Story Engine Integration — replace static DialogueNodes with AI calls, inject choice history per call, wire streaming output to typewriter renderer
 
 ## Progress
 
@@ -109,4 +109,4 @@ Plans:
 | 2. Onboarding Flow | 2/2 | Complete | 2026-03-27 |
 | 3. Core Reading Loop | 3/3 | Complete | 2026-03-27 |
 | 4. Static Story Content | 2/2 | Complete | 2026-03-28 |
-| 5. AI Story Engine | 0/2 | Not started | - |
+| 5. AI Story Engine | 2/2 | Complete | 2026-03-28 |
