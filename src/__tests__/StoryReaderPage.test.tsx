@@ -26,6 +26,7 @@ vi.mock('../store/useChaptrStore', () => ({
         userName: 'Tester',
         toggleSidebar: vi.fn(),
         gemBalance: 30,
+        choiceHistory: [],
         sidebarOpen: false,
         decisionLog: [],
       }),
@@ -40,6 +41,15 @@ vi.mock('../store/useChaptrStore', () => ({
       }),
     }
   ),
+}));
+
+// Mock useStreamingTypewriter to bypass streaming logic
+vi.mock('../hooks/useStreamingTypewriter', () => ({
+  useStreamingTypewriter: (params: { fallbackText: string }) => ({
+    displayedText: params.fallbackText,
+    isComplete: true,
+    completeInstantly: vi.fn(),
+  }),
 }));
 
 // Mock sub-components to isolate StoryReaderPage logic

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router';
 import { useChaptrStore } from '../store/useChaptrStore';
-import { useTypewriter } from '../hooks/useTypewriter';
+import { useStreamingTypewriter } from '../hooks/useStreamingTypewriter';
 import { chapter1 } from '../data/chapter1';
 import type { StoryChoice } from '../data/chapter1';
 import ProgressBar from '../components/reader/ProgressBar';
@@ -21,13 +21,14 @@ export default function StoryReaderPage() {
   const userName = useChaptrStore((s) => s.userName);
   const toggleSidebar = useChaptrStore((s) => s.toggleSidebar);
   const gemBalance = useChaptrStore((s) => s.gemBalance);
+  const choiceHistory = useChaptrStore((s) => s.choiceHistory);
 
   // For PoC, use static story data
   const chapter = chapter1;
   const [currentBeatId, setCurrentBeatId] = useState(chapter.startBeatId);
   const currentBeat = chapter.beats[currentBeatId];
   const [selectedChoiceId, setSelectedChoiceId] = useState<string | null>(null);
-  const [isLoading] = useState(false);
+  const isStaticBeat = currentBeat.isChapterStart === true;
 
   // Name prompt modal — shown when userName is null
   const [showNamePrompt, setShowNamePrompt] = useState(userName === null);
@@ -41,9 +42,15 @@ export default function StoryReaderPage() {
   const [visitedBeats, setVisitedBeats] = useState(1);
   const progress = Math.round((visitedBeats / totalBeats) * 100);
 
-  const { displayedText, isComplete, completeInstantly } = useTypewriter(
-    currentBeat.text
-  );
+  const { displayedText, isComplete, completeInstantly } = useStreamingTypewriter({
+    beatId: currentBeatId,
+    choiceHistory,
+    currentBeat,
+    isStaticBeat,
+    fallbackText: currentBeat.text,
+  });
+
+  const isStreaming = !isStaticBeat && !isComplete && displayedText === '';
 
   const advanceBeat = (nextBeatId: string) => {
     setSelectedChoiceId(null);
@@ -97,7 +104,7 @@ export default function StoryReaderPage() {
         src={currentBeat.sceneImage}
         selfieUrl={selfieUrl}
         showOverlay={currentBeat.isChapterStart}
-        isLoading={isLoading}
+        isLoading={isStreaming}
         gradientClass={currentBeat.sceneGradient}
       />
       {/* Content area, offset for sidebar on desktop */}
@@ -108,7 +115,7 @@ export default function StoryReaderPage() {
             onSidebarToggle={toggleSidebar}
           />
 
-          {isLoading ? (
+          {isStreaming ? (
             <LoadingSkeleton />
           ) : (
             <>
