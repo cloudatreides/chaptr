@@ -1,4 +1,5 @@
 @import '@fontsource-variable/space-grotesk';
+@import '@fontsource/playfair-display/700.css';
 
 @tailwind base;
 @tailwind components;
