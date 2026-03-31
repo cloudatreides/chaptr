@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useParams } from 'react-router';
 import { useChaptrStore } from '../store/useChaptrStore';
 import { useStreamingTypewriter } from '../hooks/useStreamingTypewriter';
+import { useSceneImage } from '../hooks/useSceneImage';
 import { chapter1 } from '../data/chapter1';
 import type { StoryChoice } from '../data/chapter1';
 import ProgressBar from '../components/reader/ProgressBar';
@@ -41,6 +42,9 @@ export default function StoryReaderPage() {
   const totalBeats = Object.keys(chapter.beats).length;
   const [visitedBeats, setVisitedBeats] = useState(1);
   const progress = Math.round((visitedBeats / totalBeats) * 100);
+
+  // AI scene image generation (runs async alongside text streaming)
+  const { sceneSrc, isGenerating: isImageGenerating } = useSceneImage(currentBeat);
 
   const { displayedText, isComplete, completeInstantly } = useStreamingTypewriter({
     beatId: currentBeatId,
@@ -101,10 +105,11 @@ export default function StoryReaderPage() {
     <div className="min-h-screen bg-base">
       <ProgressBar percent={progress} />
       <SceneImage
-        src={currentBeat.sceneImage}
+        src={sceneSrc || currentBeat.sceneImage}
         selfieUrl={selfieUrl}
+        userName={userName}
         showOverlay={currentBeat.isChapterStart}
-        isLoading={isStreaming}
+        isLoading={isStreaming || isImageGenerating}
         gradientClass={currentBeat.sceneGradient}
       />
       {/* Content area, offset for sidebar on desktop */}

@@ -25,6 +25,7 @@ export type ChaptrState = {
   gemBalance: number;
   selfieUrl: string | null;
   userName: string | null;
+  userBio: string | null;
   storyState: StoryState;
   choiceHistory: ChoiceRecord[];
   showSelfiePrompt: boolean;
@@ -39,6 +40,7 @@ export type ChaptrState = {
   setSelfie: (url: string) => void;
   clearSelfie: () => void;
   setUserName: (name: string) => void;
+  setUserBio: (bio: string) => void;
   setStoryState: (state: StoryState) => void;
   recordChoice: (choice: ChoiceRecord) => void;
   resetStory: () => void;
@@ -54,13 +56,14 @@ const INITIAL_STATE = {
   gemBalance: 30,
   selfieUrl: null,
   userName: null,
+  userBio: null,
   storyState: null,
   choiceHistory: [],
   showSelfiePrompt: false,
   decisionLog: [] as DecisionLogEntry[],
   sidebarOpen: false,
   firstGemChoiceUsed: {} as Record<string, boolean>,
-  _schemaVersion: 3,
+  _schemaVersion: 4,
 };
 
 export const useChaptrStore = create<ChaptrState>()(
@@ -82,6 +85,8 @@ export const useChaptrStore = create<ChaptrState>()(
       clearSelfie: () => set({ selfieUrl: null }),
 
       setUserName: (name) => set({ userName: name }),
+
+      setUserBio: (bio) => set({ userBio: bio }),
 
       setStoryState: (state) => set({ storyState: state }),
 
@@ -111,7 +116,7 @@ export const useChaptrStore = create<ChaptrState>()(
     {
       name: 'chaptr-v1',
       storage: createJSONStorage(() => localStorage),
-      version: 3,
+      version: 4,
       migrate: (persisted: unknown, version: number) => {
         const state = persisted as Record<string, unknown>;
         if (version < 2) {
@@ -121,6 +126,9 @@ export const useChaptrStore = create<ChaptrState>()(
           state.decisionLog = [];
           state.sidebarOpen = false;
           state.firstGemChoiceUsed = {};
+        }
+        if (version < 4) {
+          state.userBio = null;
         }
         return state as ChaptrState;
       },

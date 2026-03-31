@@ -6,6 +6,7 @@ import AppShell from './components/AppShell';
 import LandingPage from './pages/LandingPage';
 import UniversesPage from './pages/UniversesPage';
 import StoryReaderPage from './pages/StoryReaderPage';
+import ProfilePage from './pages/ProfilePage';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
       { path: '/', element: <LandingPage /> },
       { path: '/universes', element: <UniversesPage /> },
       { path: '/story/:chapterId', element: <StoryReaderPage /> },
+      { path: '/profile', element: <ProfilePage /> },
     ],
   },
 ]);

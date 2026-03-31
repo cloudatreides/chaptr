@@ -34,13 +34,13 @@ const STEPS = [
   {
     chapter: 'Chapter II',
     title: 'Choose your world',
-    desc: 'K-pop romance, mystery, horror. Step inside a genre and make it yours.',
+    desc: 'K-pop romance, mystery, horror. Pick a world and step inside it.',
     visual: 'genres',
   },
   {
     chapter: 'Chapter III',
     title: 'Live inside the story',
-    desc: 'Every choice shapes what happens next. AI writes prose that remembers who you are.',
+    desc: 'Every choice shapes the narrative. AI writes prose that remembers who you are.',
     visual: 'prose',
   },
 ];
@@ -131,7 +131,7 @@ export default function LandingPage() {
                   className="text-[16px] max-w-[400px]"
                   style={{ color: '#B0A8BF', fontFamily: 'Space Grotesk, sans-serif', lineHeight: '1.65' }}
                 >
-                  Upload a photo. Step inside a world. Become the one they all write about.
+                  Upload your photo. AI writes an interactive story where you are the protagonist — every scene, every choice, every outcome.
                 </motion.p>
 
                 <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
@@ -162,10 +162,7 @@ export default function LandingPage() {
                     whileTap={{ scale: 0.97 }}
                     onClick={handleStart}
                   >
-                    Begin Your Story
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
+                    Start Your Story
                   </motion.button>
                 </motion.div>
               </motion.div>
@@ -192,7 +189,7 @@ export default function LandingPage() {
                     </span>
                   </div>
                   <p className="text-[13px] leading-[1.8] italic" style={{ color: '#B0A8BF', fontFamily: 'Playfair Display, Georgia, serif' }}>
-                    "You step through the glass doors of NOVA Entertainment and the world shifts. A tall figure leans against the far pillar — and he is looking directly at you."
+                    "You step through the glass doors of NOVA Entertainment and the world shifts. A tall figure leans against the far pillar, watching you with sharp, curious eyes — and he is looking directly at you."
                   </p>
                   <div className="flex flex-col gap-2 mt-1">
                     {PREVIEW_CHOICES.map((c, i) => (
@@ -392,7 +389,7 @@ export default function LandingPage() {
               whileTap={{ scale: 0.97 }}
               onClick={handleStart}
             >
-              Begin Your Story →
+              Start Your Story →
             </motion.button>
           </div>
         </motion.div>
